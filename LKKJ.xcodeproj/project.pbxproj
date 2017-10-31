@@ -80,6 +80,8 @@
 		5F0BF3121FA8086100089F74 /* ChangeLoginPwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF30E1FA8086100089F74 /* ChangeLoginPwCell.swift */; };
 		5F0BF3131FA8086100089F74 /* LKPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF30F1FA8086100089F74 /* LKPasswordView.swift */; };
 		5F0BF3161FA808C800089F74 /* MyOderDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF3151FA808C800089F74 /* MyOderDetailsCell.swift */; };
+		5F0BF31D1FA8134900089F74 /* ClassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF31C1FA8134400089F74 /* ClassViewModel.swift */; };
+		5F0BF31E1FA8135300089F74 /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF31B1FA8132C00089F74 /* ClassModel.swift */; };
 		5F1D51951F720A260018FD31 /* ClassTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D51941F720A250018FD31 /* ClassTableviewCell.swift */; };
 		5F1D51971F7244EA0018FD31 /* ClassReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D51961F7244EA0018FD31 /* ClassReusableView.swift */; };
 		5F1D519A1F72471E0018FD31 /* ClassCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D51981F72471E0018FD31 /* ClassCollectionViewCell.swift */; };
@@ -391,6 +393,8 @@
 		5F0BF30F1FA8086100089F74 /* LKPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKPasswordView.swift; sourceTree = "<group>"; };
 		5F0BF3141FA808C800089F74 /* MyOderDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyOderDetails.storyboard; sourceTree = "<group>"; };
 		5F0BF3151FA808C800089F74 /* MyOderDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOderDetailsCell.swift; sourceTree = "<group>"; };
+		5F0BF31B1FA8132C00089F74 /* ClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassModel.swift; sourceTree = "<group>"; };
+		5F0BF31C1FA8134400089F74 /* ClassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassViewModel.swift; sourceTree = "<group>"; };
 		5F1D51941F720A250018FD31 /* ClassTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableviewCell.swift; sourceTree = "<group>"; };
 		5F1D51961F7244EA0018FD31 /* ClassReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassReusableView.swift; sourceTree = "<group>"; };
 		5F1D51981F72471E0018FD31 /* ClassCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1144,6 +1148,7 @@
 		5FCB6B411F6FA80600F2857E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5F0BF31C1FA8134400089F74 /* ClassViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 		5FCB6B441F6FA81800F2857E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F0BF31B1FA8132C00089F74 /* ClassModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2034,6 +2040,7 @@
 				2E12CB031E6F1E6F009527BA /* MHSheetFoot.m in Sources */,
 				6F4904C31F186DBA00F74691 /* UINavigationBar+Extension.swift in Sources */,
 				5F0BF3121FA8086100089F74 /* ChangeLoginPwCell.swift in Sources */,
+				5F0BF31E1FA8135300089F74 /* ClassModel.swift in Sources */,
 				5FCB6B6D1F6FC98400F2857E /* TAAbstractDotView.m in Sources */,
 				5F0BF3111FA8086100089F74 /* ChangeInfomationCell.swift in Sources */,
 				6F45EB671EF8F90C00562709 /* JLScrollView.m in Sources */,
@@ -2059,6 +2066,7 @@
 				5F0BF3011FA807FF00089F74 /* MySetting.swift in Sources */,
 				5FCB6B521F6FA9FF00F2857E /* Classification.swift in Sources */,
 				5F4638851F95F7A10045188B /* MyMessgae.swift in Sources */,
+				5F0BF31D1FA8134900089F74 /* ClassViewModel.swift in Sources */,
 				6F4904BD1F186DBA00F74691 /* UIButton+Extension.swift in Sources */,
 				2E12CB0E1E6F1E6F009527BA /* UIView+PYExtension.m in Sources */,
 				6F4904D31F186E9200F74691 /* MainTabBarController.swift in Sources */,

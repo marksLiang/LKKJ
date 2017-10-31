@@ -45,6 +45,13 @@ class Home: CustomTemplateViewController {
         self.getHttpData()
         self.initUI()
     }
+    //MARK: 刷新
+    override func headerRefresh() {
+        getHttpData()
+    }
+    override func Error_Click() {
+        getHttpData()
+    }
     //MARK: 获取数据
     func getHttpData() -> Void {
         self.imageList.removeAll()

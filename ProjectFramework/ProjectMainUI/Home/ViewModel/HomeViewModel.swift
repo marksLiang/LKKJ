@@ -8,8 +8,9 @@
 
 import UIKit
 
-class HomeViewModel: NSObject {
+class HomeViewModel {
     var model = HomeModel()
+    
     func GetHomeModel(result:((_ result:Bool?) -> Void)?) {
         CommonFunction.Global_Post(entity: HomeModel(), IsListData: false, url: HttpsUrl+"index.php/", isHUD: false, isHUDMake: false, parameters: nil) { (resultModel) in
             if resultModel?.status == 200 {

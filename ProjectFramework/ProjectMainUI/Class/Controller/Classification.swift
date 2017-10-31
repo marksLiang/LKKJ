@@ -38,11 +38,29 @@ class Classification: UIViewController {
     fileprivate let identiFier = "ClassTableviewCell"
     fileprivate var currenCell:ClassTableviewCell? = nil
     fileprivate let sectionText = ["热门商品","猜你喜欢","为你推荐"]
+    fileprivate var viewModel = ClassViewModel()
+    fileprivate var index = 0
+    fileprivate var isfinished = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "分类"
+        self.GetHttpData()
         self.initUI()
+        
     }
+    //请求数据
+    private func GetHttpData()->Void{
+        viewModel.GetGoodsClass { (result) in
+            if result == true {
+                self.isfinished = true
+                self.leftTableView.reloadData()
+                self.collectionView.reloadData()
+            }else{
+                CommonFunction.HUD("请求错误", type: .error)
+            }
+        }
+    }
+    //MARK: initUI
     private func initUI()->Void{
         self.view.addSubview(leftTableView)
         self.view.addSubview(collectionView)
@@ -55,7 +73,7 @@ extension Classification: UITableViewDelegate,UITableViewDataSource,UICollection
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.viewModel.model.goodsType?.count ?? 0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
@@ -66,7 +84,8 @@ extension Classification: UITableViewDelegate,UITableViewDataSource,UICollection
             cell.isSelected = true
             currenCell = cell
         }
-        cell.lable.text = "精品女装"
+        let model = self.viewModel.model.goodsType![indexPath.row]
+        cell.lable.text = model.typename
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,23 +93,27 @@ extension Classification: UITableViewDelegate,UITableViewDataSource,UICollection
         if cell != currenCell {
             currenCell?.change()
             currenCell = cell
+            self.index = indexPath.row
+            self.collectionView.reloadData()
         }
+        
     }
     //MARK: collectionViewDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int{
-        return sectionText.count
+        return isfinished ? self.viewModel.model.goodsType![index].second_type!.count : 0
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return isfinished ? self.viewModel.model.goodsType![index].second_type![section].third_type!.count : 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClassCollectionViewCell", for: indexPath) as! ClassCollectionViewCell
+        cell.InitConfig(self.viewModel.model.goodsType![index].second_type![indexPath.section].third_type![indexPath.row] as Any)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let head = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)as!ClassReusableView
-            head.sectioLable.text = sectionText[indexPath.section]
+            head.sectioLable.text = self.viewModel.model.goodsType![index].second_type![indexPath.section].typename
             return head
         }
         else{
