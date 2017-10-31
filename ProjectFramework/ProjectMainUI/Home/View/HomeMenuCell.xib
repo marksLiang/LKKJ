@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeMenuCell" id="gTV-IL-0wX" customClass="HomeMenuCell" customModule="LKKJ" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="86" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="86" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="goF-K4-t5R">
+                        <rect key="frame" x="23" y="10" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="4sv-T9-vaK"/>
+                            <constraint firstAttribute="height" constant="40" id="Lme-Bc-qOU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是菜单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkQ-Ki-H5h">
+                        <rect key="frame" x="0.0" y="55" width="86" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="IfV-4U-Oe9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="VkQ-Ki-H5h" firstAttribute="top" secondItem="goF-K4-t5R" secondAttribute="bottom" constant="5" id="Bqx-hb-9uc"/>
+                <constraint firstItem="VkQ-Ki-H5h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bWC-Yo-9DH"/>
+                <constraint firstItem="goF-K4-t5R" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.8" id="ebw-va-l6k"/>
+                <constraint firstAttribute="trailing" secondItem="VkQ-Ki-H5h" secondAttribute="trailing" id="gyE-2T-zjr"/>
+                <constraint firstItem="goF-K4-t5R" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="oEL-Kb-1bU"/>
+            </constraints>
+            <size key="customSize" width="86" height="82"/>
+            <connections>
+                <outlet property="mainImage" destination="goF-K4-t5R" id="NH5-Nu-bm7"/>
+                <outlet property="menuName" destination="VkQ-Ki-H5h" id="9Mt-bx-KdY"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="68"/>
+        </collectionViewCell>
+    </objects>
+</document>

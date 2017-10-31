@@ -1,0 +1,6 @@
+framework module Pods_LKKJ {
+  umbrella header "Pods-LKKJ-umbrella.h"
+
+  export *
+  module * { export * }
+}

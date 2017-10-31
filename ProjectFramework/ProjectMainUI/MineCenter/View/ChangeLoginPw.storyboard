@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--修改密码-->
+        <scene sceneID="efW-9Y-QLC">
+            <objects>
+                <tableViewController storyboardIdentifier="ChangeLoginPw" title="修改密码" id="Bos-Lv-iwa" customClass="ChangeLoginPw" customModule="LKKJ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vyy-VD-Ffs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChangeLoginPwCell" id="kfY-Qa-Erh" customClass="ChangeLoginPwCell" customModule="LKKJ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kfY-Qa-Erh" id="N1u-ej-EOM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZU-Hs-0cb">
+                                            <rect key="frame" x="16" y="8" width="88" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="88" id="ufX-48-OcG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入旧密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nBr-oR-NDi">
+                                            <rect key="frame" x="110" y="8" width="220" height="28"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63L-pI-V9l">
+                                            <rect key="frame" x="334" y="16" width="25" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="GMf-9L-6rW"/>
+                                                <constraint firstAttribute="height" constant="12" id="IBy-DD-GKw"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="mine_icon_eye_nor"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="63L-pI-V9l" secondAttribute="trailing" constant="16" id="ACy-0Y-hLG"/>
+                                        <constraint firstItem="63L-pI-V9l" firstAttribute="centerY" secondItem="N1u-ej-EOM" secondAttribute="centerY" id="CfO-QH-OyL"/>
+                                        <constraint firstItem="nBr-oR-NDi" firstAttribute="top" secondItem="N1u-ej-EOM" secondAttribute="top" constant="8" id="J0V-oy-Jgm"/>
+                                        <constraint firstItem="nBr-oR-NDi" firstAttribute="leading" secondItem="bZU-Hs-0cb" secondAttribute="trailing" constant="6" id="LXL-MZ-aHZ"/>
+                                        <constraint firstItem="63L-pI-V9l" firstAttribute="leading" secondItem="nBr-oR-NDi" secondAttribute="trailing" constant="4" id="MVW-l7-7AE"/>
+                                        <constraint firstAttribute="bottom" secondItem="bZU-Hs-0cb" secondAttribute="bottom" constant="8" id="OB1-dN-zDz"/>
+                                        <constraint firstItem="bZU-Hs-0cb" firstAttribute="leading" secondItem="N1u-ej-EOM" secondAttribute="leading" constant="16" id="bC1-Vn-AM6"/>
+                                        <constraint firstAttribute="bottom" secondItem="nBr-oR-NDi" secondAttribute="bottom" constant="8" id="d40-3h-fX4"/>
+                                        <constraint firstItem="bZU-Hs-0cb" firstAttribute="top" secondItem="N1u-ej-EOM" secondAttribute="top" constant="8" id="rlr-ku-8v5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="nBr-oR-NDi" id="RVz-u8-wIo"/>
+                                    <outlet property="titleLabel" destination="bZU-Hs-0cb" id="KsH-VJ-naY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bos-Lv-iwa" id="Ax1-yB-6l2"/>
+                            <outlet property="delegate" destination="Bos-Lv-iwa" id="Zs2-ov-g7Y"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5q-Xl-w1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101.59999999999999" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mine_icon_eye_nor" width="25" height="16"/>
+    </resources>
+</document>
