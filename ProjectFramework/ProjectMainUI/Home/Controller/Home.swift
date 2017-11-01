@@ -27,6 +27,7 @@ class Home: CustomTemplateViewController {
 //        headerView.isHidden = true
         headerView.selectCallbackValue {[weak self] (row) in
             let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsList", Identifier: "GoodsList") as! GoodsList
+            vc.typeid = self?.viewModel.model.index_type![row].typeid
             self?.navigationController?.show(vc, sender: self)
         }
         return headerView
@@ -56,6 +57,7 @@ class Home: CustomTemplateViewController {
     func getHttpData() -> Void {
         self.imageList.removeAll()
         viewModel.GetHomeModel { (result) in
+            self.header.endRefreshing()
             if result == true {
                 for model in self.viewModel.model.index_adv! {
                     self.imageList.append(model.advpic)
@@ -67,6 +69,7 @@ class Home: CustomTemplateViewController {
                 self.headerView.dataList = self.viewModel.model.index_type
                 self.headerView.collectionView.reloadData()
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+                
             }else{
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
             }
@@ -88,10 +91,9 @@ class Home: CustomTemplateViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = LoginViewControllerTwo()
-        self.present(vc, animated: true, completion: nil)
-//        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
-//        self.navigationController?.show(vc, sender: self)
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
+        vc.model = self.viewModel.model.index_goods![indexPath.row]
+        self.navigationController?.show(vc, sender: self)
     }
     //MARK: initUI
     private func initUI()->Void{
@@ -160,7 +162,9 @@ extension Home: SDCycleScrollViewDelegate,PYSearchViewControllerDelegate {
     //PYSearchViewControllerDelegate 搜索时调用
     func searchViewController(_ searchViewController: PYSearchViewController!, didSearchWithsearchBar searchBar: UISearchBar!, searchText: String!) {
         searchViewController.dismiss(animated: false) {
-            debugPrint("结束了")
+            let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsList", Identifier: "GoodsList") as! GoodsList
+            vc.search = searchText
+            self.navigationController?.show(vc, sender: self)
         }
     }
 }

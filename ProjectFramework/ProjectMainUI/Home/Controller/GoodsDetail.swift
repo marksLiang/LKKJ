@@ -20,7 +20,7 @@ class GoodsDetail: CustomTemplateViewController {
     //轮播图
     fileprivate lazy var shuffling: SDCycleScrollView = {
         let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 200),delegate:self ,placeholderImage:UIImage.init(named: "placeholder"))
-        shuffling?.localizationImageNamesGroup = StartOneImageList
+//        shuffling?.localizationImageNamesGroup = [StartOneImageList]
         shuffling?.pageDotColor = UIColor.white
         shuffling?.currentPageDotColor = CommonFunction.SystemColor()
         return shuffling!
@@ -69,7 +69,13 @@ class GoodsDetail: CustomTemplateViewController {
         collectionBtn.setImage(UIImage.init(named: "icon_Collection"), for: .normal)
         collectionBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
-             debugPrint("收藏")
+                //  收藏
+                if Global_UserInfo.IsLogin {
+                    GoodsDetailViewModel.collectGooods(goodsid: (self?.model?.goodsid)!, userid: Global_UserInfo.userid, token: Global_UserInfo.token)
+                } else {
+                    let vc = LoginViewControllerTwo()
+                    self?.present(vc, animated: true, completion: nil)
+                }
         }).addDisposableTo(self.disposeBag)
         return collectionBtn
     }()
@@ -80,12 +86,18 @@ class GoodsDetail: CustomTemplateViewController {
     fileprivate let disposeBag = DisposeBag() //创建一个处理包（通道）
     fileprivate let colorArray = [CommonFunction.SystemColor(),UIColor().TransferStringToColor("#F09826")] //颜色
     fileprivate let textArray  = ["立即购买","加入购物车"]
+    
+    var model: index_goodsList?
+    
+    @IBOutlet weak var goodsInfoLabel: UILabel!
+    @IBOutlet weak var originalPriceLabel: UILabel!
+    @IBOutlet weak var nowPriecLabel: UILabel!
+    @IBOutlet weak var soldOutLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initNagationBar()
         self.initBottomBar()
         self.initUI()
-        
     }
     //MARK: tableDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -141,9 +153,16 @@ class GoodsDetail: CustomTemplateViewController {
             button.backgroundColor = colorArray[i]
             button.setTitle(textArray[i], for: .normal)
             button.setTitleColor(UIColor.white, for: .normal)
-            button.rx.tap.subscribe(
-                {[weak self] (value) in
-                debugPrint(button.titleLabel!.text)
+            button.rx.tap.subscribe( {[weak self] (value) in
+                let buttonTitle = button.titleLabel!.text
+                if buttonTitle == "立即购买" {
+                    
+                } else if buttonTitle == "加入购物车" {
+                    
+                } else {
+                    
+                }
+                
             }).addDisposableTo(self.disposeBag)
             bottomView.addSubview(button)
         }
@@ -160,6 +179,16 @@ class GoodsDetail: CustomTemplateViewController {
         self.tableView.tableHeaderView = tableViewHead
         self.header.isHidden = true
         self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+        
+        guard let model = self.model else {
+            return
+        }
+        shuffling.imageURLStringsGroup = [model.goodspic]
+        
+        goodsInfoLabel.text = model.content
+        originalPriceLabel.text = model.cashtype + model.old_price
+        nowPriecLabel.text = model.cashtype + model.price
+        soldOutLabel.text = model.sold_out
     }
     //MARK: 设置导航栏
     private func initNagationBar()->Void{

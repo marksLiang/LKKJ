@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,13 +72,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="goodsInfoLabel" destination="8Zh-p4-XMP" id="PFA-D9-qob"/>
+                        <outlet property="nowPriecLabel" destination="Nfg-im-FDl" id="XL6-5k-EhJ"/>
+                        <outlet property="originalPriceLabel" destination="XM6-D7-neS" id="qjE-Me-WXL"/>
+                        <outlet property="soldOutLabel" destination="CMZ-IF-jDY" id="wRJ-aQ-R7j"/>
                         <outlet property="tableView" destination="7A4-Az-6nh" id="Wkk-4H-qYg"/>
                         <outlet property="tableViewHead" destination="wEq-at-0vE" id="9db-Pe-UMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4Y-Vj-OEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112.8" y="124.58770614692655"/>
+            <point key="canvasLocation" x="-1281" y="65"/>
         </scene>
     </scenes>
 </document>

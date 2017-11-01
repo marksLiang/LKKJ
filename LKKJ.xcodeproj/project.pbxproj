@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439E6E11FA87B4900DC5BBB /* GoodsDetailViewModel.swift */; };
+		0439E6E31FA8835100DC5BBB /* MyInfomation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF30D1FA8086100089F74 /* MyInfomation.storyboard */; };
+		0439E6E41FA8835700DC5BBB /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF3091FA8086000089F74 /* MySetting.storyboard */; };
+		0439E6E51FA8835F00DC5BBB /* ChangePayPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF3071FA8085F00089F74 /* ChangePayPassword.storyboard */; };
+		0439E6E61FA8836400DC5BBB /* ChangeLoginPw.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF3061FA8085F00089F74 /* ChangeLoginPw.storyboard */; };
+		0439E6E71FA8836900DC5BBB /* ChangeInfomation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF30A1FA8086000089F74 /* ChangeInfomation.storyboard */; };
+		0439E6E81FA8836D00DC5BBB /* ChangeGender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF30C1FA8086100089F74 /* ChangeGender.storyboard */; };
+		0439E6E91FA8837500DC5BBB /* MyOderDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF3141FA808C800089F74 /* MyOderDetails.storyboard */; };
+		0450E11C1FA82A0700076735 /* GoodListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450E11B1FA82A0700076735 /* GoodListViewModel.swift */; };
+		0450E11E1FA84B2900076735 /* GoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450E11D1FA84B2900076735 /* GoodListModel.swift */; };
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
@@ -264,6 +274,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0439E6E11FA87B4900DC5BBB /* GoodsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDetailViewModel.swift; sourceTree = "<group>"; };
+		0450E11B1FA82A0700076735 /* GoodListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListViewModel.swift; sourceTree = "<group>"; };
+		0450E11D1FA84B2900076735 /* GoodListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListModel.swift; sourceTree = "<group>"; };
 		079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		079C974D1D17AD8B00DD539F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1104,6 +1117,8 @@
 			isa = PBXGroup;
 			children = (
 				5F7178131FA2E77F000E16EB /* HomeViewModel.swift */,
+				0450E11B1FA82A0700076735 /* GoodListViewModel.swift */,
+				0439E6E11FA87B4900DC5BBB /* GoodsDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1141,6 +1156,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7178151FA30429000E16EB /* HomeModel.swift */,
+				0450E11D1FA84B2900076735 /* GoodListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1773,7 +1789,7 @@
 				TargetAttributes = {
 					27609BCB1CB257810041E8B7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HVZA4NK9EV;
+						DevelopmentTeam = WQC9K9M749;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1821,13 +1837,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCB6B581F6FAA4300F2857E /* ShoppingCar.storyboard in Resources */,
+				0439E6E91FA8837500DC5BBB /* MyOderDetails.storyboard in Resources */,
 				6F45EB5D1EF8F90C00562709 /* navigationbar_back_dark@2x.png in Resources */,
 				6F45EB5A1EF8F90C00562709 /* compose_guide_check_box_default@3x.png in Resources */,
 				6F49049D1F186DA200F74691 /* CodeScan.bundle in Resources */,
 				6F45EB601EF8F90C00562709 /* navigationbar_back_withtext@3x.png in Resources */,
 				2E12CB061E6F1E6F009527BA /* MHSheetHead.xib in Resources */,
+				0439E6E51FA8835F00DC5BBB /* ChangePayPassword.storyboard in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
 				6F45EB5B1EF8F90C00562709 /* compose_guide_check_box_right@2x.png in Resources */,
+				0439E6E31FA8835100DC5BBB /* MyInfomation.storyboard in Resources */,
 				27609BFE1CB257E40041E8B7 /* Podfile in Resources */,
 				6F45EB5E1EF8F90C00562709 /* navigationbar_back_dark@3x.png in Resources */,
 				6FF51D421EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.xib in Resources */,
@@ -1838,14 +1857,17 @@
 				6F45EB651EF8F90C00562709 /* JLBadgeView.xib in Resources */,
 				2E12CB131E6F1E6F009527BA /* TZImagePickerController.bundle in Resources */,
 				5FCB6B501F6FA9AB00F2857E /* Home.storyboard in Resources */,
+				0439E6E71FA8836900DC5BBB /* ChangeInfomation.storyboard in Resources */,
 				5F1D519B1F72471E0018FD31 /* ClassCollectionViewCell.xib in Resources */,
 				5F4638871F95F99C0045188B /* MyMessgae.storyboard in Resources */,
 				5F29FEB01F7B3A7B004B41FE /* Login2Resource.bundle in Resources */,
 				6F45EB5F1EF8F90C00562709 /* navigationbar_back_withtext@2x.png in Resources */,
 				5FCB6B5C1F6FAD4000F2857E /* MineCenter.storyboard in Resources */,
+				0439E6E41FA8835700DC5BBB /* MySetting.storyboard in Resources */,
 				5F6A7E141F78AC76008C26C9 /* GoodsList.storyboard in Resources */,
 				6FDB2E041EC4612E0092FAFC /* AlipaySDK.bundle in Resources */,
 				2E12CB091E6F1E6F009527BA /* PYSearch.bundle in Resources */,
+				0439E6E81FA8836D00DC5BBB /* ChangeGender.storyboard in Resources */,
 				6F49049E1F186DA200F74691 /* CustomSettings.bundle in Resources */,
 				6F45EB591EF8F90C00562709 /* compose_guide_check_box_default@2x.png in Resources */,
 				2E2611691E52D55F00CC70F9 /* Main.storyboard in Resources */,
@@ -1860,6 +1882,7 @@
 				5F6A7E1C1F78F721008C26C9 /* MyOder.storyboard in Resources */,
 				2E596AB41DD23F720027E03C /* loading.gif in Resources */,
 				5FCB6B2D1F6F9E6000F2857E /* LICENSE in Resources */,
+				0439E6E61FA8836400DC5BBB /* ChangeLoginPw.storyboard in Resources */,
 				6F45EB581EF8F90C00562709 /* camera_image_capture_badge@3x.png in Resources */,
 				5F7674701F8B12A200A6C71E /* GoodsDetail.storyboard in Resources */,
 				6FF51D451EBD7EC500021790 /* ZFTimerCollectionReusableView.xib in Resources */,
@@ -2031,6 +2054,7 @@
 				6F4904CB1F186E4800F74691 /* CustomTemplateViewController.swift in Sources */,
 				6FDB2E091EC4612E0092FAFC /* base64.m in Sources */,
 				6FF51D411EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.m in Sources */,
+				0450E11C1FA82A0700076735 /* GoodListViewModel.swift in Sources */,
 				5FCB6B701F6FC98400F2857E /* TAPageControl.m in Sources */,
 				6F4904D11F186E8800F74691 /* CreatedbBase.swift in Sources */,
 				6F45EB621EF8F90C00562709 /* JLAssetsLibrary.m in Sources */,
@@ -2082,6 +2106,7 @@
 				6FDB2E0A1EC4612E0092FAFC /* NSDataEx.m in Sources */,
 				6FF51D351EBD7E9E00021790 /* ScrollViewPageViewController.swift in Sources */,
 				5F1D519A1F72471E0018FD31 /* ClassCollectionViewCell.swift in Sources */,
+				0450E11E1FA84B2900076735 /* GoodListModel.swift in Sources */,
 				6F4904B91F186DBA00F74691 /* Double+Extension.swift in Sources */,
 				5FCB6B711F6FC98400F2857E /* SDCollectionViewCell.m in Sources */,
 				6FF51D271EBD7E9E00021790 /* CAPSPageMenu.swift in Sources */,
@@ -2094,6 +2119,7 @@
 				5FCB6B781F6FD5A300F2857E /* HomeMenuCell.swift in Sources */,
 				6F4904C61F186DBA00F74691 /* UITextField+Extension.swift in Sources */,
 				5F6A7E121F78AC41008C26C9 /* GoodsList.swift in Sources */,
+				0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */,
 				6F4904C71F186DBA00F74691 /* UIToolbar+Extension.swift in Sources */,
 				5F70DDCA1F95A46B0083EA94 /* MyDefaultCell.swift in Sources */,
 				6F4904D51F186E9800F74691 /* AppResultModel.swift in Sources */,
@@ -2288,7 +2314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HVZA4NK9EV;
+				DEVELOPMENT_TEAM = WQC9K9M749;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2334,7 +2360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HVZA4NK9EV;
+				DEVELOPMENT_TEAM = WQC9K9M749;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
