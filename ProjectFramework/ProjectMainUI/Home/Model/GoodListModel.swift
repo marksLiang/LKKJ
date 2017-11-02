@@ -9,23 +9,9 @@
 import UIKit
 
 class GoodListModel: NSObject {
-    var goods_list: [GoodsModel]?
+    var goods_list: [index_goodsList]?
     override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["goods_list":GoodsModel.self]
+        return ["goods_list":index_goodsList.self]
     }
 }
 
-class GoodsModel: NSObject {
-    var goodsid = ""
-    var tilte = ""
-    var goodspic = ""
-    var infopic = ""
-    var content = ""
-    var goodstype = ""
-    var cashtype = ""
-    var old_price = ""
-    var price = ""
-    var sold_out = ""
-    var inventory = ""
-    var credit = ""
-}
