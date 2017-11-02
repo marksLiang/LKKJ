@@ -81,6 +81,12 @@ class GoodsDetail: CustomTemplateViewController {
                     } else {
                         GoodsDetailViewModel.collet(collet: .add, goodsid: self?.model?.goodsid ?? "") { (reslut) in
                             self?.collectionBtn.isSelected = reslut
+                            if reslut {
+                                CommonFunction.HUD("收藏成功", type: .success)
+                            } else {
+                                CommonFunction.HUD("收藏失败", type: .error)
+                            }
+                            
                         }
                     }
                 } else {

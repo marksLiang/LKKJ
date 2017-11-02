@@ -51,9 +51,26 @@ class ShoppingCar: CustomTemplateViewController {
         super.viewDidLoad()
         self.title = "购物车"
         // Do any additional setup after loading the view.
-        self.getData()
         self.initUI()
+        self.getData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if CommonFunction.Instance.isNeedRefreshShoppingCar {
+            self.getData()
+            CommonFunction.Instance.isNeedRefreshShoppingCar = false
+        }
+    }
+    
+    //MARK: 刷新
+    override func headerRefresh() {
+        getData()
+    }
+    override func Error_Click() {
+        getData()
+    }
+    
     func getData() -> Void {
         viewModel.getGoodsCarList { (result) in
             if result {

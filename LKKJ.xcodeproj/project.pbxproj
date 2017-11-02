@@ -21,6 +21,11 @@
 		044A73431FA9BCAF00B2C1D2 /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A73421FA9BCAF00B2C1D2 /* MyInfoModel.swift */; };
 		0450E11C1FA82A0700076735 /* GoodListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450E11B1FA82A0700076735 /* GoodListViewModel.swift */; };
 		0450E11E1FA84B2900076735 /* GoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450E11D1FA84B2900076735 /* GoodListModel.swift */; };
+		049E0CD71FAAC60900F06B2A /* MyMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CD61FAAC60900F06B2A /* MyMessageViewModel.swift */; };
+		049E0CD91FAAC61A00F06B2A /* MyMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CD81FAAC61A00F06B2A /* MyMessageModel.swift */; };
+		049E0CDD1FAAFA6000F06B2A /* UIImage+DAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */; };
+		049E0CDF1FAB078100F06B2A /* MyAdressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */; };
+		049E0CE11FAB079600F06B2A /* MyAdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CE01FAB079600F06B2A /* MyAdressModel.swift */; };
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
@@ -284,6 +289,12 @@
 		044A73421FA9BCAF00B2C1D2 /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
 		0450E11B1FA82A0700076735 /* GoodListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListViewModel.swift; sourceTree = "<group>"; };
 		0450E11D1FA84B2900076735 /* GoodListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListModel.swift; sourceTree = "<group>"; };
+		049E0CD61FAAC60900F06B2A /* MyMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageViewModel.swift; sourceTree = "<group>"; };
+		049E0CD81FAAC61A00F06B2A /* MyMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageModel.swift; sourceTree = "<group>"; };
+		049E0CDB1FAAFA5F00F06B2A /* UIImage+DAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DAExtension.h"; sourceTree = "<group>"; };
+		049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DAExtension.m"; sourceTree = "<group>"; };
+		049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressViewModel.swift; sourceTree = "<group>"; };
+		049E0CE01FAB079600F06B2A /* MyAdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressModel.swift; sourceTree = "<group>"; };
 		079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		079C974D1D17AD8B00DD539F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -761,6 +772,8 @@
 			isa = PBXGroup;
 			children = (
 				044A73421FA9BCAF00B2C1D2 /* MyInfoModel.swift */,
+				049E0CD81FAAC61A00F06B2A /* MyMessageModel.swift */,
+				049E0CE01FAB079600F06B2A /* MyAdressModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,8 +782,19 @@
 			isa = PBXGroup;
 			children = (
 				044A73401FA9BC9700B2C1D2 /* MyInfoViewModel.swift */,
+				049E0CD61FAAC60900F06B2A /* MyMessageViewModel.swift */,
+				049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		049E0CDA1FAAFA5600F06B2A /* ImageCompress */ = {
+			isa = PBXGroup;
+			children = (
+				049E0CDB1FAAFA5F00F06B2A /* UIImage+DAExtension.h */,
+				049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */,
+			);
+			path = ImageCompress;
 			sourceTree = "<group>";
 		};
 		27609BC31CB257810041E8B7 = {
@@ -1485,6 +1509,7 @@
 		6F4904A11F186DBA00F74691 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				049E0CDA1FAAFA5600F06B2A /* ImageCompress */,
 				6F4904A21F186DBA00F74691 /* SwiftExtension */,
 			);
 			path = Extension;
@@ -2045,11 +2070,13 @@
 				6F4904B71F186DBA00F74691 /* Date+Extension.swift in Sources */,
 				5F29FEAD1F7A5EE4004B41FE /* LoginViewControllerTwo.swift in Sources */,
 				6FF51D441EBD7EC500021790 /* ZFTimerCollectionReusableView.m in Sources */,
+				049E0CD91FAAC61A00F06B2A /* MyMessageModel.swift in Sources */,
 				6F45EB531EF8F90C00562709 /* JLThumbnailViewController.m in Sources */,
 				5F4638831F95F5CE0045188B /* MyCollect.swift in Sources */,
 				5FCB6B811F70CB2F00F2857E /* HomeSecondCell.swift in Sources */,
 				5FCB6B561F6FAA3300F2857E /* ShoppingCar.swift in Sources */,
 				5F6A7E181F78EEAB008C26C9 /* MyOder.swift in Sources */,
+				049E0CDF1FAB078100F06B2A /* MyAdressViewModel.swift in Sources */,
 				5F0BF2FE1FA807FF00089F74 /* ChangePayPassword.swift in Sources */,
 				5F6A7E161F78B00D008C26C9 /* GoodsListCell.swift in Sources */,
 				5F29FEA31F7A5E90004B41FE /* ForgotPasswordCell.swift in Sources */,
@@ -2061,6 +2088,7 @@
 				043D84B51FA95CDB0056FCB8 /* ShoppingCarViewModel.swift in Sources */,
 				6F91AD671EBC5BE200A9E617 /* HcdPopMenuItem.m in Sources */,
 				5F7674721F8CA39600A6C71E /* UserCommentCell.swift in Sources */,
+				049E0CDD1FAAFA6000F06B2A /* UIImage+DAExtension.m in Sources */,
 				6F4904CB1F186E4800F74691 /* CustomTemplateViewController.swift in Sources */,
 				6FDB2E091EC4612E0092FAFC /* base64.m in Sources */,
 				6FF51D411EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.m in Sources */,
@@ -2130,6 +2158,7 @@
 				5FCB6B781F6FD5A300F2857E /* HomeMenuCell.swift in Sources */,
 				6F4904C61F186DBA00F74691 /* UITextField+Extension.swift in Sources */,
 				5F6A7E121F78AC41008C26C9 /* GoodsList.swift in Sources */,
+				049E0CD71FAAC60900F06B2A /* MyMessageViewModel.swift in Sources */,
 				0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */,
 				6F4904C71F186DBA00F74691 /* UIToolbar+Extension.swift in Sources */,
 				5F70DDCA1F95A46B0083EA94 /* MyDefaultCell.swift in Sources */,
@@ -2139,6 +2168,7 @@
 				2E12CA201E6F1D88009527BA /* CommonFunction.swift in Sources */,
 				5F70DDC61F94B5470083EA94 /* MyAdressEditCell.swift in Sources */,
 				5F7178161FA30429000E16EB /* HomeModel.swift in Sources */,
+				049E0CE11FAB079600F06B2A /* MyAdressModel.swift in Sources */,
 				6F4905231F186F2C00F74691 /* ModifyViewController.swift in Sources */,
 				6FDB2E0B1EC4612E0092FAFC /* openssl_wrapper.m in Sources */,
 				5F0BF3041FA807FF00089F74 /* MyInfomationBase.swift in Sources */,

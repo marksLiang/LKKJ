@@ -98,7 +98,13 @@ class MyAdressEdit: CustomTemplateViewController {
     //MARK: setNagvtionbar
     private func setNagvtionbar()->Void{
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: saveButton)
+        saveButton.addTarget(self, action: #selector(rightBarButtonItemEvent), for: .touchUpInside)
     }
+    
+    @objc private func rightBarButtonItemEvent() {
+        MyAdressViewModel.addAddress("赵六", "8888", "火星一号", "0")
+    }
+    
     //MARK: initUI
     private func inituI()->Void{
         self.InitCongif(tableView)

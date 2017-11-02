@@ -19,15 +19,36 @@ class MyMessgae: CustomTemplateViewController {
     @IBOutlet weak var tableView: UITableView!
     /********************  属性  ********************/
     fileprivate let identifier = "MyMessageCell"
-    
+    fileprivate let viewModel = MyMessageViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "我的消息"
         self.initUI()
+        self.getMessage()
     }
+    private func getMessage() {
+        viewModel.getMyMessage { (result) in
+            if result {
+                self.numberOfRowsInSection = self.viewModel.model.message?.count ?? 0
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+            } else {
+                self.RefreshRequest(isLoading: false, isHiddenFooter: false, isLoadError: true)
+            }
+        }
+    }
+    
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageCell
+        
+        let models = self.viewModel.model.message
+        if models?.count != 0 {
+            let model = models![indexPath.row]
+            cell.messageTitle.text = model.title
+            cell.massageContent.text = model.content
+            cell.messageTime.text = model.addtime.CompareCurretTime()
+        }
+        
         return cell
     }
     //MARK: initUI
@@ -39,7 +60,6 @@ class MyMessgae: CustomTemplateViewController {
         self.buttonBar.addSubview(line)
         self.InitCongif(tableView)
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight + 40, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight - 40)
-        self.numberOfRowsInSection = 5
         self.numberOfSections = 1
         self.tableViewheightForRowAt = 120
     }

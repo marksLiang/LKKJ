@@ -29,7 +29,8 @@ extension MySetting {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MySettingCell", for: indexPath)
-        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
         cell.textLabel?.text = titles[indexPath.row]
         if indexPath.row == 0 {
             cell.accessoryType = .none

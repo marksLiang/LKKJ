@@ -51,6 +51,7 @@ class GoodsDetailViewModel: NSObject {
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Car/add", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "goodsid": goodsid, "count": count]) { (resultModel) in
             if resultModel?.status == 200 {
                 CommonFunction.HUD(resultModel?.msg ?? "添加到购物车成功", type: .success)
+                CommonFunction.Instance.isNeedRefreshShoppingCar = true
             } else {
                 let message = resultModel?.msg
                 CommonFunction.HUD(message ?? "收藏失败", type: .error)

@@ -11,7 +11,7 @@ import UIKit
 
 
 
-extension UIImage{
+extension UIImage {
     ///设置图片透明度
     func ImageByApplyingAlpha(_ alpha: CGFloat, image: UIImage) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)

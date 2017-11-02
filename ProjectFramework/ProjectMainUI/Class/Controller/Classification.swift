@@ -137,4 +137,10 @@ extension Classification: UITableViewDelegate,UITableViewDataSource,UICollection
         let showrowsitem:CGFloat=3  //竖屏显示的数目 （暂时未做横屏手机item  间距直接也存在点差异 ipad 没事 iPhone需要修改
         return CGSize(width: self.collectionView.frame.width / showrowsitem, height: self.collectionView.frame.width / showrowsitem * 1.3)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = self.viewModel.model.goodsType![index].second_type![indexPath.section].third_type![indexPath.row] as third_typeList
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsList", Identifier: "GoodsList") as! GoodsList
+        vc.typeid = model.typeid
+        self.navigationController?.show(vc, sender: self)
+    }
 }

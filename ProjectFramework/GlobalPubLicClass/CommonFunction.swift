@@ -131,6 +131,8 @@ final class   CommonFunction {
         }
         return Static.instance
     }
+    /// 是否需要刷新购物车
+    var isNeedRefreshShoppingCar = false
     
     
     // MARK:第三方库定义方法

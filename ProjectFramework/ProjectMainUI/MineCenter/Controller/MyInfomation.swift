@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MyInfomation: UITableViewController {
     
     fileprivate let MSHeaderCell = "MyHeaderCell"
@@ -36,11 +37,14 @@ class MyInfomation: UITableViewController {
     }
     // 保存
     @objc fileprivate func if_rightBarButtonItemEvent() {
-        guard let user = self.userInfo,
-              let imageData = self.userHeaderImage  else {
+        guard let user = self.userInfo else {
             return
         }
-        MyInfoViewModel.changeUserInfomation(user.nickname, user.phone, user.sex, String.init(data: imageData, encoding: .utf8)!)
+       
+        if self.userHeaderImage != nil {
+            MyInfoViewModel.changeUserInfomation(user.nickname, user.phone, user.sex, self.userHeaderImage!)
+        }
+        
     }
 }
 
@@ -73,15 +77,15 @@ extension MyInfomation {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MSHeaderCell, for: indexPath) as! MyHeaderCell
             cell.titleLabel.text = titles[indexPath.row]
-            cell.titleLabel.font = UIFont.systemFont(ofSize: 16.0)
+            cell.titleLabel.font = UIFont.systemFont(ofSize: 15.0)
             cell.headerImageView.ImageLoad(PostUrl: self.userInfo?.userpic ?? "")
             return cell
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: MSNormalCell)
             if cell == nil {
                 cell = UITableViewCell(style: .value1, reuseIdentifier: MSNormalCell)
-                cell?.textLabel?.font = UIFont.systemFont(ofSize: 16.0)
-                cell?.detailTextLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                cell?.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                cell?.detailTextLabel?.font = UIFont.systemFont(ofSize: 14.0)
             }
             cell?.accessoryType = .disclosureIndicator
             cell?.textLabel?.text = titles[indexPath.row]
@@ -173,7 +177,8 @@ extension MyInfomation {
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MyHeaderCell
         cell.headerImageView.image = pickedImage
-        self.userHeaderImage = UIImageJPEGRepresentation(pickedImage, 0.8)
+        self.userHeaderImage = UIImage.da_compressImage(toData: pickedImage, withRatio: 1.0)
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -32,20 +32,40 @@ class MyAdress: CustomTemplateViewController {
     fileprivate let disposeBag = DisposeBag() //创建一个处理包（通道）
     fileprivate var currenCell:MyAdressCell! = nil
     fileprivate let identifier = "MyAdressCell"
+    fileprivate let viewModel = MyAdressViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "我的地址"
         self.inituI()
-        // Do any additional setup after loading the view.
+        self.getAdress()
     }
+    
+    private func getAdress() {
+        viewModel.getMyAdress { (result) in
+            if result {
+                self.numberOfRowsInSection = self.viewModel.model.address?.count ?? 0
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+            } else {
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
+            }
+        }
+    }
+    
     //MARK: tableDelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyAdressCell
-        if indexPath.row == 0 {
+        cell.selectionStyle = .none
+        let model = self.viewModel.model.address![indexPath.row]
+        cell.consignee.text = model.name
+        cell.ReceivingAddress.text = model.address
+        cell.selectButton.isSelected = false
+        if model.state == "1" {
             cell.changeUI()
             currenCell = cell
         }
         cell.selectCallbackValue {[weak self] (buttonTag) in
+            print(indexPath.row)
             switch buttonTag {
             case 1:
                 if self?.currenCell != cell {
@@ -59,7 +79,17 @@ class MyAdress: CustomTemplateViewController {
                 debugPrint("编辑")
                 break;
             case 3:
-                debugPrint("删除")
+                MBProgressHUD.showloading("正在删除", ismask: false, to: tableView)
+                MyAdressViewModel.deleteAddress(model.accepterid, result: { (result) in
+                    MBProgressHUD.hide(for: tableView, animated: true)
+                    if result {
+                        self?.getAdress()
+                        MBProgressHUD.showSuccess("删除成功", to: tableView)
+                    } else {
+                        MBProgressHUD.showError("请求错误", to: tableView)
+                    }
+                })
+                
                 break;
             default:
                 break;
@@ -73,11 +103,10 @@ class MyAdress: CustomTemplateViewController {
         self.InitCongif(tableView)
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight , width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight - 45)
         self.tableView.backgroundColor = UIColor().TransferStringToColor("#EEEEEE")
-        self.numberOfRowsInSection = 2
         self.numberOfSections = 1
         self.tableViewheightForRowAt = 125
         self.header.isHidden = true
-        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+//        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
     }
 
 }
