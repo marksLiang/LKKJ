@@ -27,8 +27,8 @@ class HomeGoodsCell: UITableViewCell {
     override func InitConfig(_ cell: Any) {
         let model = cell as! index_goodsList
         goodsImage.ImageLoad(PostUrl: model.goodspic)
-        goosTitle.text = model.title
-        goodsOldPrice.text = "¥"+model.old_price
+        goosTitle.text = model.tilte
+        goodsOldPrice.text = model.cashtype + model.old_price
         goodsNewPrice.text = model.price
     }
 }

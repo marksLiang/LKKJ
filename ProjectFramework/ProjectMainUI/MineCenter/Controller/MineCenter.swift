@@ -49,9 +49,14 @@ class MineCenter: UIViewController {
     }
     ///用户信息
     func UserInfoEdit(){
-        debugPrint("点击图片")
-        let vc = CommonFunction.ViewControllerWithStoryboardName("MyInfomation", Identifier: "MyInfomation") as! MyInfomation
-        self.navigationController?.show(vc, sender: self)
+        if Global_UserInfo.IsLogin {
+            let vc = CommonFunction.ViewControllerWithStoryboardName("MyInfomation", Identifier: "MyInfomation") as! MyInfomation
+            self.navigationController?.show(vc, sender: self)
+        } else {
+            let vc = LoginViewControllerTwo()
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
 }
 extension MineCenter:UITableViewDelegate,UITableViewDataSource{

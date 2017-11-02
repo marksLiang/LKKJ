@@ -9,10 +9,19 @@
 import UIKit
 
 class GoodsCarModel: NSObject {
-    var image=""
-    var goodsName = ""
-    var goodsCount = 0
-    var OriginalPrice = 0.0
-    var PresentPrice  = 0.0
+    var goods_car:[CarModel]?
+    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["goods_car":CarModel.self]
+    }
+}
+
+class CarModel: NSObject {
+    var carid = ""
+    var userid = ""
+    var goodsid = ""
+    var count = ""
+    var goodsinfo:index_goodsList?
+    
     var isSelected = false
+    
 }

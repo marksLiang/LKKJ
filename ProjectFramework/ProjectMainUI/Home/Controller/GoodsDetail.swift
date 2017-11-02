@@ -67,11 +67,22 @@ class GoodsDetail: CustomTemplateViewController {
         collectionBtn.layer.borderColor = UIColor.gray.cgColor
         collectionBtn.layer.borderWidth = 0.5
         collectionBtn.setImage(UIImage.init(named: "icon_Collection"), for: .normal)
+        collectionBtn.setImage(UIImage.init(named: "myCollction"), for: .highlighted)
+        collectionBtn.setImage(UIImage.init(named: "myCollction"), for: .selected)
         collectionBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
-                //  收藏
+
                 if Global_UserInfo.IsLogin {
-                    GoodsDetailViewModel.collectGooods(goodsid: (self?.model?.goodsid)!, userid: Global_UserInfo.userid, token: Global_UserInfo.token)
+                    // 取消收藏
+                    if (self?.collectionBtn.isSelected)! {
+                        GoodsDetailViewModel.collet(collet: .delete, goodsid: self?.model?.goodsid ?? "") { (reslut) in
+                            self?.collectionBtn.isSelected = !reslut
+                        }
+                    } else {
+                        GoodsDetailViewModel.collet(collet: .add, goodsid: self?.model?.goodsid ?? "") { (reslut) in
+                            self?.collectionBtn.isSelected = reslut
+                        }
+                    }
                 } else {
                     let vc = LoginViewControllerTwo()
                     self?.present(vc, animated: true, completion: nil)
@@ -98,6 +109,10 @@ class GoodsDetail: CustomTemplateViewController {
         self.initNagationBar()
         self.initBottomBar()
         self.initUI()
+        
+        GoodsDetailViewModel.collet(collet: .status, goodsid: model?.goodsid ?? "") { (reslut) in
+            self.collectionBtn.isSelected = reslut
+        }
     }
     //MARK: tableDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -158,7 +173,7 @@ class GoodsDetail: CustomTemplateViewController {
                 if buttonTitle == "立即购买" {
                     
                 } else if buttonTitle == "加入购物车" {
-                    
+                    GoodsDetailViewModel.addGoodsCar(goodsid: (self?.model?.goodsid)!, count: 1)
                 } else {
                     
                 }
@@ -188,7 +203,7 @@ class GoodsDetail: CustomTemplateViewController {
         goodsInfoLabel.text = model.content
         originalPriceLabel.text = model.cashtype + model.old_price
         nowPriecLabel.text = model.cashtype + model.price
-        soldOutLabel.text = model.sold_out
+        soldOutLabel.text = "已售：" + model.sold_out
     }
     //MARK: 设置导航栏
     private func initNagationBar()->Void{

@@ -8,17 +8,54 @@
 
 import UIKit
 
-class GoodsDetailViewModel: NSObject {
+enum GooodsCollection {
+    case add
+    case delete
+    case status
+}
 
-    class func collectGooods(goodsid: String, userid: String, token: String) {
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Goods/detail", isHUD: false, isHUDMake: false, parameters: ["goodsid": goodsid, "userid": userid, "token": token]) { (resultModel) in
+class GoodsDetailViewModel: NSObject {
+    
+    /// 收藏相关
+    ///
+    /// - Parameters:
+    ///   - collet: 是否已收藏、添加收藏、取消收藏
+    ///   - goodsid: 商品id
+    ///   - reslut: 回调
+    class func collet(collet: GooodsCollection, goodsid: String, reslut: @escaping (_ reslut: Bool)->()) {
+        var urlPath = ""
+        let params = ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "goodsid": goodsid]
+        switch collet {
+            case .status:
+                urlPath = "index.php/Goods/detail"
+            case .add:
+                urlPath = "index.php/Personal/addlike"
+            case .delete:
+                urlPath = "index.php/Personal/deletelike"
+        }
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + urlPath, isHUD: false, isHUDMake: false, parameters: params as NSDictionary) { (resultModel) in
             if resultModel?.status == 200 {
-                CommonFunction.HUD("收藏成功", type: .success)
+                reslut(true)
+            } else {
+                reslut(false)
+            }
+        }
+    }
+    
+    /// 添加购物车
+    ///
+    /// - Parameters:
+    ///   - goodsid: 商品id
+    ///   - count: 数量
+    class func addGoodsCar(goodsid: String, count: Int) {
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Car/add", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "goodsid": goodsid, "count": count]) { (resultModel) in
+            if resultModel?.status == 200 {
+                CommonFunction.HUD(resultModel?.msg ?? "添加到购物车成功", type: .success)
             } else {
                 let message = resultModel?.msg
                 CommonFunction.HUD(message ?? "收藏失败", type: .error)
             }
         }
     }
-
+    
 }

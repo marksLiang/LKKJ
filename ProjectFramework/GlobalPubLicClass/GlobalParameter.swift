@@ -29,6 +29,7 @@ class MyInfoModel:NSObject  {
     
 }
 
+let LKGenders = ["女", "男", "不详"]
 
 
 //支付宝AppScheme

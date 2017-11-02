@@ -18,6 +18,22 @@ class ChangeLoginPw: MyInfomationBase {
         
         tableView.separatorStyle = .singleLine
     }
+    
+    override func rightBarButtonItemEvent() {
+        let allCells:[ChangeLoginPwCell] = self.tableView.visibleCells as! [ChangeLoginPwCell]
+        var texts = [String]()
+        
+        for cell in allCells {
+            texts.append(cell.textField.text ?? "")
+        }
+        if texts.count == titles.count {
+            MyInfoViewModel.changeLoginPassword(texts.first ?? "", texts[1], texts.last ?? "") { (success) in
+                if success {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource & UITableViewDelegate

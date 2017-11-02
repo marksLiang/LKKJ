@@ -102,9 +102,15 @@ class GoodsList: CustomTemplateViewController {
         let model = self.viewModel.model.goods_list![indexPath.row]
         cell.goodspicImageView.ImageLoad(PostUrl: model.goodspic)
         cell.contentLabel.text = model.content
-        cell.priceLabel.text = model.price
-        cell.sold_outLabel.text = model.sold_out
+        cell.priceLabel.text = model.cashtype + model.price
+        cell.sold_outLabel.text = "已售：" + model.sold_out
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
+        vc.model = self.viewModel.model.goods_list![indexPath.row]
+        self.navigationController?.show(vc, sender: self)
     }
 }
 extension GoodsList: SDCycleScrollViewDelegate,PYSearchViewControllerDelegate {

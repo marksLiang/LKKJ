@@ -13,15 +13,34 @@ class MyInfomation: UITableViewController {
     fileprivate let MSHeaderCell = "MyHeaderCell"
     fileprivate let MSNormalCell = "MyNomalCell"
     fileprivate let titles = ["头像管理", "昵称", "手机号", "修改登录密码", "修改支付密码", "性别"]
-    fileprivate let infoDatas = ["", "马大哈", "13725475504", "", "", "男"]
+    fileprivate var userInfo: UserModel?
+    fileprivate var userHeaderImage: Data?
+    
+    deinit {
+        debugPrint(self.description)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        getUserInfo()
     }
     
-    func if_rightBarButtonItemEvent() {
-        
+    // 获取用户信息
+    private func getUserInfo() {
+        MyInfoViewModel.fetchUserInfomation { (user) in
+            self.userInfo = user
+            self.tableView.reloadData()
+        }
+    }
+    // 保存
+    @objc fileprivate func if_rightBarButtonItemEvent() {
+        guard let user = self.userInfo,
+              let imageData = self.userHeaderImage  else {
+            return
+        }
+        MyInfoViewModel.changeUserInfomation(user.nickname, user.phone, user.sex, String.init(data: imageData, encoding: .utf8)!)
     }
 }
 
@@ -55,6 +74,7 @@ extension MyInfomation {
             let cell = tableView.dequeueReusableCell(withIdentifier: MSHeaderCell, for: indexPath) as! MyHeaderCell
             cell.titleLabel.text = titles[indexPath.row]
             cell.titleLabel.font = UIFont.systemFont(ofSize: 16.0)
+            cell.headerImageView.ImageLoad(PostUrl: self.userInfo?.userpic ?? "")
             return cell
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: MSNormalCell)
@@ -65,7 +85,19 @@ extension MyInfomation {
             }
             cell?.accessoryType = .disclosureIndicator
             cell?.textLabel?.text = titles[indexPath.row]
-            cell?.detailTextLabel?.text = infoDatas[indexPath.row]
+            var detailText = ""
+            switch indexPath.row {
+            case 1:
+                detailText = self.userInfo?.nickname ?? ""
+            case 2:
+                detailText = self.userInfo?.phone ?? ""
+            case titles.count - 1:
+                let index = Int(self.userInfo?.sex ?? "0") ?? LKGenders.count - 1
+                detailText =  LKGenders[index]
+            default:
+                break
+            }
+            cell?.detailTextLabel?.text = detailText
             return cell ?? UITableViewCell()
         }
     }
@@ -89,12 +121,22 @@ extension MyInfomation {
                     self.present(pickerController, animated: true, completion: nil)
                 }
             }
-        case 1, 2:
+        case 1:
             let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeInfomation", Identifier: "ChangeInfomation") as! ChangeInfomation
-            vc.info = infoDatas[indexPath.row]
-            vc.completion = {(newNickname) in
+            vc.info = self.userInfo?.nickname
+            vc.completion = {(result) in
                 let cell = tableView.cellForRow(at: indexPath)
-                cell?.detailTextLabel?.text = newNickname
+                cell?.detailTextLabel?.text = result
+                self.userInfo?.nickname = result
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeInfomation", Identifier: "ChangeInfomation") as! ChangeInfomation
+            vc.info = self.userInfo?.phone
+            vc.completion = {(result) in
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.detailTextLabel?.text = result
+                self.userInfo?.phone = result
             }
             self.navigationController?.pushViewController(vc, animated: true)
         case 3:
@@ -105,13 +147,15 @@ extension MyInfomation {
             self.navigationController?.pushViewController(vc, animated: true)
         case 5:
             let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeGender", Identifier: "ChangeGender") as! ChangeGender
-            let cell = self.tableView.cellForRow(at: IndexPath(row: self.infoDatas.count - 1, section: 0))
+            let cell = self.tableView.cellForRow(at: IndexPath(row: self.titles.count - 1, section: 0))
             guard let safCell = cell else {
                 return
             }
             vc.currentGender = safCell.detailTextLabel?.text
             vc.changeGenderCompletion = { (result) in
                 safCell.detailTextLabel?.text = result
+                let index = LKGenders.index(of: result)
+                self.userInfo?.sex = "\(index ?? 2)"
             }
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -129,6 +173,7 @@ extension MyInfomation {
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MyHeaderCell
         cell.headerImageView.image = pickedImage
+        self.userHeaderImage = UIImageJPEGRepresentation(pickedImage, 0.8)
         self.dismiss(animated: true, completion: nil)
     }
 }

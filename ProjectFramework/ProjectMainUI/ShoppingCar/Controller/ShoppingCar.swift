@@ -28,8 +28,9 @@ class ShoppingCar: CustomTemplateViewController {
     /********************  属性  ********************/
     fileprivate let identifier = "ShoppingCarCell"
     fileprivate var isCellEditing = false
-    fileprivate var dataArray = [GoodsCarModel]()
-    fileprivate var selectArray = [GoodsCarModel]()
+    fileprivate let viewModel = ShoppingCarViewModel()
+    fileprivate var dataArray = [CarModel]()
+    fileprivate var selectArray = [CarModel]()
     //MARK: 视图加载
     override func viewDidLayoutSubviews() {
         //全选按钮
@@ -54,14 +55,18 @@ class ShoppingCar: CustomTemplateViewController {
         self.initUI()
     }
     func getData() -> Void {
-        for i in 0..<5 {
-            let model = GoodsCarModel()
-            model.goodsName = "我是商品名\(i)"
-            model.goodsCount = 1
-            model.OriginalPrice = 40.8
-            model.PresentPrice = 38.0
-            model.isSelected = false
-            self.dataArray.append(model)
+        viewModel.getGoodsCarList { (result) in
+            if result {
+                self.dataArray.removeAll()
+                for model in self.viewModel.model.goods_car! {
+                    self.dataArray.append(model)
+                }
+                self.numberOfSections = 1
+                self.numberOfRowsInSection = self.viewModel.model.goods_car?.count ?? 0
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: false)
+            } else {
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
+            }
         }
     }
     //MARK: 按钮方法
@@ -138,7 +143,7 @@ class ShoppingCar: CustomTemplateViewController {
         var totlePrice = 0.0
         for i in 0..<self.selectArray.count {
             let model = self.selectArray[i]
-            let price = model.PresentPrice * Double(model.goodsCount)
+            let price = Double(Int((model.goodsinfo?.price)!)!) * Double(model.count)!
             totlePrice += price
         }
         let text = "合计:¥\(totlePrice)"
@@ -159,16 +164,16 @@ class ShoppingCar: CustomTemplateViewController {
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ShoppingCarCell
-        let model = self.dataArray[indexPath.row]
+        let model = self.viewModel.model.goods_car![indexPath.row]
         cell.isCellEding = isCellEditing
         //cell操作
         cell.FuncCallbackValue {[weak self] (buttonTag,number) in
-            model.goodsCount = number
+            self?.selectArray.append(model)
             self?.totalPrice()
         }
-        cell.selectCallbackValue {[weak self] (iselected) in
-            model.isSelected = iselected
-            if iselected == true {
+        cell.selectCallbackValue {[weak self] (isSelected) in
+            model.isSelected = isSelected
+            if isSelected == true {
                 self?.selectArray.append(model)
                 debugPrint("标记")
             }else{
@@ -197,9 +202,7 @@ class ShoppingCar: CustomTemplateViewController {
     
 }
 extension ShoppingCar {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArray.count
-    }
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

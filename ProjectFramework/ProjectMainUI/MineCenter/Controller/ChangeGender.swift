@@ -9,7 +9,6 @@
 import UIKit
 
 class ChangeGender: MyInfomationBase {
-    fileprivate let genders = ["男", "女"]
     var changeGenderCompletion:((_ result: String) -> Void)?
     var currentGender: String?
     override func viewDidLoad() {
@@ -30,12 +29,12 @@ class ChangeGender: MyInfomationBase {
 extension ChangeGender {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return LKGenders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeGenderCell", for: indexPath)
-        cell.textLabel?.text = genders[indexPath.row]
+        cell.textLabel?.text = LKGenders[indexPath.row]
         cell.accessoryType = .none
         if currentGender == cell.textLabel?.text {
             cell.accessoryType = .checkmark
