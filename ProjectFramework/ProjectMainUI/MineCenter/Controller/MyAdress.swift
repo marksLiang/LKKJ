@@ -21,7 +21,10 @@ class MyAdress: CustomTemplateViewController {
         addNewAdress.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 debugPrint("添加新地址")
-                let vc = CommonFunction.ViewControllerWithStoryboardName("MyAdressEdit", Identifier: "MyAdressEdit") as! MyAdressEdit
+                let vc = CommonFunction.ViewControllerWithStoryboardName("MyAddressEdit", Identifier: "MyAddressEdit") as! MyAddressEdit
+                vc.needRefreshAddressList = {
+                    self?.getAdress()
+                }
                 self?.navigationController?.show(vc, sender: self)
         }).addDisposableTo(self.disposeBag)
         return addNewAdress
@@ -76,17 +79,23 @@ class MyAdress: CustomTemplateViewController {
                 }
                 break;
             case 2:
-                debugPrint("编辑")
+                let vc = CommonFunction.ViewControllerWithStoryboardName("MyAddressEdit", Identifier: "MyAddressEdit") as! MyAddressEdit
+                vc.address = model
+                vc.needRefreshAddressList = {
+                    self?.getAdress()
+                }
+                self?.navigationController?.show(vc, sender: self)
+                
                 break;
             case 3:
-                MBProgressHUD.showloading("正在删除", ismask: false, to: tableView)
+                self?.lk_showLoadingIndicator(status: "正在删除", autoHide: false)
                 MyAdressViewModel.deleteAddress(model.accepterid, result: { (result) in
-                    MBProgressHUD.hide(for: tableView, animated: true)
+                    MBProgressHUD.hide(for: self?.view, animated: true)
                     if result {
                         self?.getAdress()
-                        MBProgressHUD.showSuccess("删除成功", to: tableView)
+                        MBProgressHUD.lk_showSuccess(status: "删除成功")
                     } else {
-                        MBProgressHUD.showError("请求错误", to: tableView)
+                        MBProgressHUD.lk_showError(status: "删除失败")
                     }
                 })
                 

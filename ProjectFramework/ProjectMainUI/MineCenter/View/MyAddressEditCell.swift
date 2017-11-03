@@ -1,16 +1,17 @@
 //
-//  MyAdressDetailCell.swift
+//  MyAddressEditCell.swift
 //  LKKJ
 //
-//  Created by 恋康科技 on 2017/10/17.
+//  Created by Jinjun liang on 2017/11/3.
 //  Copyright © 2017年 HCY. All rights reserved.
 //
 
 import UIKit
 
-class MyAdressDetailCell: UITableViewCell {
-
-    @IBOutlet weak var detailTextField: UITextField!
+class MyAddressEditCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var contentTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

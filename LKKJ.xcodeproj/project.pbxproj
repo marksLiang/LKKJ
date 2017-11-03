@@ -26,6 +26,15 @@
 		049E0CDD1FAAFA6000F06B2A /* UIImage+DAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */; };
 		049E0CDF1FAB078100F06B2A /* MyAdressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */; };
 		049E0CE11FAB079600F06B2A /* MyAdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CE01FAB079600F06B2A /* MyAdressModel.swift */; };
+		04AF9E311FAC43D0007C72C2 /* MyAddressEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E301FAC43D0007C72C2 /* MyAddressEdit.swift */; };
+		04AF9E331FAC4439007C72C2 /* MyAddressEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */; };
+		04AF9E351FAC47A2007C72C2 /* MyAddressEditDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E341FAC47A2007C72C2 /* MyAddressEditDetailCell.swift */; };
+		04AF9E371FAC47C1007C72C2 /* MyAddressEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E361FAC47C1007C72C2 /* MyAddressEditCell.swift */; };
+		04AF9E391FAC4BE7007C72C2 /* MyAddressSetDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E381FAC4BE7007C72C2 /* MyAddressSetDefaultCell.swift */; };
+		04AF9E421FAC6022007C72C2 /* CityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E411FAC6022007C72C2 /* CityChooseView.swift */; };
+		04AF9E441FAC620C007C72C2 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04AF9E431FAC620C007C72C2 /* city.plist */; };
+		04BA84A71FAC6896002630F4 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */; };
+		04BA84A91FAC6C50002630F4 /* HUD.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BA84A81FAC6C50002630F4 /* HUD.xcassets */; };
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
@@ -132,10 +141,6 @@
 		5F70DDBC1F944C790083EA94 /* MyAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDBB1F944C790083EA94 /* MyAdress.swift */; };
 		5F70DDBE1F944C8A0083EA94 /* MyAdress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F70DDBD1F944C8A0083EA94 /* MyAdress.storyboard */; };
 		5F70DDC01F9458D70083EA94 /* MyAdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDBF1F9458D70083EA94 /* MyAdressCell.swift */; };
-		5F70DDC21F94A80F0083EA94 /* MyAdressEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDC11F94A80F0083EA94 /* MyAdressEdit.swift */; };
-		5F70DDC41F94A8F50083EA94 /* MyAdressEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F70DDC31F94A8F50083EA94 /* MyAdressEdit.storyboard */; };
-		5F70DDC61F94B5470083EA94 /* MyAdressEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDC51F94B5470083EA94 /* MyAdressEditCell.swift */; };
-		5F70DDC81F959EC90083EA94 /* MyAdressDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDC71F959EC90083EA94 /* MyAdressDetailCell.swift */; };
 		5F70DDCA1F95A46B0083EA94 /* MyDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70DDC91F95A46B0083EA94 /* MyDefaultCell.swift */; };
 		5F7178141FA2E77F000E16EB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7178131FA2E77F000E16EB /* HomeViewModel.swift */; };
 		5F7178161FA30429000E16EB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7178151FA30429000E16EB /* HomeModel.swift */; };
@@ -295,6 +300,15 @@
 		049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DAExtension.m"; sourceTree = "<group>"; };
 		049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressViewModel.swift; sourceTree = "<group>"; };
 		049E0CE01FAB079600F06B2A /* MyAdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressModel.swift; sourceTree = "<group>"; };
+		04AF9E301FAC43D0007C72C2 /* MyAddressEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressEdit.swift; sourceTree = "<group>"; };
+		04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAddressEdit.storyboard; sourceTree = "<group>"; };
+		04AF9E341FAC47A2007C72C2 /* MyAddressEditDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressEditDetailCell.swift; sourceTree = "<group>"; };
+		04AF9E361FAC47C1007C72C2 /* MyAddressEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressEditCell.swift; sourceTree = "<group>"; };
+		04AF9E381FAC4BE7007C72C2 /* MyAddressSetDefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressSetDefaultCell.swift; sourceTree = "<group>"; };
+		04AF9E411FAC6022007C72C2 /* CityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChooseView.swift; sourceTree = "<group>"; };
+		04AF9E431FAC620C007C72C2 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		04BA84A81FAC6C50002630F4 /* HUD.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HUD.xcassets; sourceTree = "<group>"; };
 		079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		079C974D1D17AD8B00DD539F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -446,10 +460,6 @@
 		5F70DDBB1F944C790083EA94 /* MyAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdress.swift; sourceTree = "<group>"; };
 		5F70DDBD1F944C8A0083EA94 /* MyAdress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAdress.storyboard; sourceTree = "<group>"; };
 		5F70DDBF1F9458D70083EA94 /* MyAdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressCell.swift; sourceTree = "<group>"; };
-		5F70DDC11F94A80F0083EA94 /* MyAdressEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressEdit.swift; sourceTree = "<group>"; };
-		5F70DDC31F94A8F50083EA94 /* MyAdressEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAdressEdit.storyboard; sourceTree = "<group>"; };
-		5F70DDC51F94B5470083EA94 /* MyAdressEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressEditCell.swift; sourceTree = "<group>"; };
-		5F70DDC71F959EC90083EA94 /* MyAdressDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressDetailCell.swift; sourceTree = "<group>"; };
 		5F70DDC91F95A46B0083EA94 /* MyDefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDefaultCell.swift; sourceTree = "<group>"; };
 		5F7178131FA2E77F000E16EB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5F7178151FA30429000E16EB /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -797,6 +807,33 @@
 			path = ImageCompress;
 			sourceTree = "<group>";
 		};
+		04AF9E3D1FAC5FC4007C72C2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				04BA84A51FAC6885002630F4 /* Extension */,
+				04AF9E451FAC6248007C72C2 /* CityChooseView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		04AF9E451FAC6248007C72C2 /* CityChooseView */ = {
+			isa = PBXGroup;
+			children = (
+				04AF9E431FAC620C007C72C2 /* city.plist */,
+				04AF9E411FAC6022007C72C2 /* CityChooseView.swift */,
+			);
+			path = CityChooseView;
+			sourceTree = "<group>";
+		};
+		04BA84A51FAC6885002630F4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04BA84A81FAC6C50002630F4 /* HUD.xcassets */,
+				04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		27609BC31CB257810041E8B7 = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +860,7 @@
 		27609BCE1CB257810041E8B7 /* ProjectFramework */ = {
 			isa = PBXGroup;
 			children = (
+				04AF9E3D1FAC5FC4007C72C2 /* Common */,
 				6F4904C91F186DE200F74691 /* BaseClass */,
 				6F4904A11F186DBA00F74691 /* Extension */,
 				6F4904981F186DA200F74691 /* BoundleSouce */,
@@ -1282,7 +1320,7 @@
 				5FCB6B591F6FAD3600F2857E /* MineCenter.swift */,
 				5F6A7E171F78EEAB008C26C9 /* MyOder.swift */,
 				5F70DDBB1F944C790083EA94 /* MyAdress.swift */,
-				5F70DDC11F94A80F0083EA94 /* MyAdressEdit.swift */,
+				04AF9E301FAC43D0007C72C2 /* MyAddressEdit.swift */,
 				5F4638821F95F5CE0045188B /* MyCollect.swift */,
 				5F4638841F95F7A10045188B /* MyMessgae.swift */,
 				5F0BF2F81FA807FE00089F74 /* ChangeGender.swift */,
@@ -1309,9 +1347,10 @@
 				5F0BF3151FA808C800089F74 /* MyOderDetailsCell.swift */,
 				5F70DDBD1F944C8A0083EA94 /* MyAdress.storyboard */,
 				5F70DDBF1F9458D70083EA94 /* MyAdressCell.swift */,
-				5F70DDC31F94A8F50083EA94 /* MyAdressEdit.storyboard */,
-				5F70DDC51F94B5470083EA94 /* MyAdressEditCell.swift */,
-				5F70DDC71F959EC90083EA94 /* MyAdressDetailCell.swift */,
+				04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */,
+				04AF9E361FAC47C1007C72C2 /* MyAddressEditCell.swift */,
+				04AF9E341FAC47A2007C72C2 /* MyAddressEditDetailCell.swift */,
+				04AF9E381FAC4BE7007C72C2 /* MyAddressSetDefaultCell.swift */,
 				5F70DDC91F95A46B0083EA94 /* MyDefaultCell.swift */,
 				5F4638861F95F99C0045188B /* MyMessgae.storyboard */,
 				5F4638881F9606270045188B /* MyMessageCell.swift */,
@@ -1879,6 +1918,7 @@
 				2E12CB061E6F1E6F009527BA /* MHSheetHead.xib in Resources */,
 				0439E6E51FA8835F00DC5BBB /* ChangePayPassword.storyboard in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
+				04BA84A91FAC6C50002630F4 /* HUD.xcassets in Resources */,
 				6F45EB5B1EF8F90C00562709 /* compose_guide_check_box_right@2x.png in Resources */,
 				0439E6E31FA8835100DC5BBB /* MyInfomation.storyboard in Resources */,
 				27609BFE1CB257E40041E8B7 /* Podfile in Resources */,
@@ -1886,14 +1926,15 @@
 				6FF51D421EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.xib in Resources */,
 				2E12CB081E6F1E6F009527BA /* MHSheetView.xib in Resources */,
 				5F46388B1F96EE380045188B /* MyCollect.storyboard in Resources */,
-				5F70DDC41F94A8F50083EA94 /* MyAdressEdit.storyboard in Resources */,
 				6F49049F1F186DA200F74691 /* GlobalClassSettings.bundle in Resources */,
 				6F45EB651EF8F90C00562709 /* JLBadgeView.xib in Resources */,
 				2E12CB131E6F1E6F009527BA /* TZImagePickerController.bundle in Resources */,
 				5FCB6B501F6FA9AB00F2857E /* Home.storyboard in Resources */,
+				04AF9E441FAC620C007C72C2 /* city.plist in Resources */,
 				0439E6E71FA8836900DC5BBB /* ChangeInfomation.storyboard in Resources */,
 				5F1D519B1F72471E0018FD31 /* ClassCollectionViewCell.xib in Resources */,
 				5F4638871F95F99C0045188B /* MyMessgae.storyboard in Resources */,
+				04AF9E331FAC4439007C72C2 /* MyAddressEdit.storyboard in Resources */,
 				5F29FEB01F7B3A7B004B41FE /* Login2Resource.bundle in Resources */,
 				6F45EB5F1EF8F90C00562709 /* navigationbar_back_withtext@2x.png in Resources */,
 				5FCB6B5C1F6FAD4000F2857E /* MineCenter.storyboard in Resources */,
@@ -1965,6 +2006,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 				"${BUILT_PRODUCTS_DIR}/swiftScan/swiftScan.framework",
 			);
@@ -1986,6 +2028,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/swiftScan.framework",
 			);
@@ -2058,6 +2101,7 @@
 				5FCB6B7D1F70BF4F00F2857E /* LYFFlowLayout.swift in Sources */,
 				5F0BF3051FA807FF00089F74 /* MyOderDetails.swift in Sources */,
 				2E12CB101E6F1E6F009527BA /* TZAssetCell.m in Sources */,
+				04AF9E351FAC47A2007C72C2 /* MyAddressEditDetailCell.swift in Sources */,
 				2E12CB141E6F1E6F009527BA /* TZImagePickerController.m in Sources */,
 				5F29FEA71F7A5E9B004B41FE /* LoginViewModel.swift in Sources */,
 				6F4904C81F186DBA00F74691 /* UIViewController+Extension.swift in Sources */,
@@ -2127,6 +2171,7 @@
 				6F45EB691EF8F90C00562709 /* JLPhotoBrowser.m in Sources */,
 				5FCB6B721F6FC98400F2857E /* SDCycleScrollView.m in Sources */,
 				5F0BF3011FA807FF00089F74 /* MySetting.swift in Sources */,
+				04BA84A71FAC6896002630F4 /* MBProgressHUD+Extension.swift in Sources */,
 				5FCB6B521F6FA9FF00F2857E /* Classification.swift in Sources */,
 				5F4638851F95F7A10045188B /* MyMessgae.swift in Sources */,
 				5F0BF31D1FA8134900089F74 /* ClassViewModel.swift in Sources */,
@@ -2149,6 +2194,7 @@
 				0450E11E1FA84B2900076735 /* GoodListModel.swift in Sources */,
 				6F4904B91F186DBA00F74691 /* Double+Extension.swift in Sources */,
 				5FCB6B711F6FC98400F2857E /* SDCollectionViewCell.m in Sources */,
+				04AF9E391FAC4BE7007C72C2 /* MyAddressSetDefaultCell.swift in Sources */,
 				6FF51D271EBD7E9E00021790 /* CAPSPageMenu.swift in Sources */,
 				6F4904C41F186DBA00F74691 /* UITableViewCell+Extension.swift in Sources */,
 				5F0BF3031FA807FF00089F74 /* ChangeInfomation.swift in Sources */,
@@ -2161,19 +2207,21 @@
 				049E0CD71FAAC60900F06B2A /* MyMessageViewModel.swift in Sources */,
 				0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */,
 				6F4904C71F186DBA00F74691 /* UIToolbar+Extension.swift in Sources */,
+				04AF9E311FAC43D0007C72C2 /* MyAddressEdit.swift in Sources */,
 				5F70DDCA1F95A46B0083EA94 /* MyDefaultCell.swift in Sources */,
 				6F4904D51F186E9800F74691 /* AppResultModel.swift in Sources */,
 				6F45EB561EF8F90C00562709 /* UIView+Animation.m in Sources */,
 				6F4904B61F186DBA00F74691 /* CGFloat+Extension.swift in Sources */,
 				2E12CA201E6F1D88009527BA /* CommonFunction.swift in Sources */,
-				5F70DDC61F94B5470083EA94 /* MyAdressEditCell.swift in Sources */,
 				5F7178161FA30429000E16EB /* HomeModel.swift in Sources */,
 				049E0CE11FAB079600F06B2A /* MyAdressModel.swift in Sources */,
 				6F4905231F186F2C00F74691 /* ModifyViewController.swift in Sources */,
 				6FDB2E0B1EC4612E0092FAFC /* openssl_wrapper.m in Sources */,
 				5F0BF3041FA807FF00089F74 /* MyInfomationBase.swift in Sources */,
 				5FCB6B851F71129200F2857E /* HomeGoodsCell.swift in Sources */,
+				04AF9E421FAC6022007C72C2 /* CityChooseView.swift in Sources */,
 				5F1D51951F720A260018FD31 /* ClassTableviewCell.swift in Sources */,
+				04AF9E371FAC47C1007C72C2 /* MyAddressEditCell.swift in Sources */,
 				2E12CAB91E6F1E67009527BA /* MBProgressHUD+NJ.m in Sources */,
 				5F94F1401F7A46D200A8A2DA /* RegisterModel.swift in Sources */,
 				6FF51D361EBD7E9E00021790 /* UpLoadPicManagerView.swift in Sources */,
@@ -2193,7 +2241,6 @@
 				2E12CB0D1E6F1E6F009527BA /* UIColor+PYExtension.m in Sources */,
 				5F29FEA41F7A5E93004B41FE /* LoginView.swift in Sources */,
 				5F1D51971F7244EA0018FD31 /* ClassReusableView.swift in Sources */,
-				5F70DDC21F94A80F0083EA94 /* MyAdressEdit.swift in Sources */,
 				6FDB2E081EC4612E0092FAFC /* Order.m in Sources */,
 				6F45EB541EF8F90C00562709 /* ALAsset+Associate.m in Sources */,
 				2E12CB0B1E6F1E6F009527BA /* PYSearchSuggestionViewController.m in Sources */,
@@ -2224,7 +2271,6 @@
 				5F29FEA61F7A5E99004B41FE /* ForgotPasswordViewModel.swift in Sources */,
 				6FF51D2B1EBD7E9E00021790 /* ImagePreviewViewController.swift in Sources */,
 				2E12CB171E6F1E6F009527BA /* TZPhotoPreviewController.m in Sources */,
-				5F70DDC81F959EC90083EA94 /* MyAdressDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

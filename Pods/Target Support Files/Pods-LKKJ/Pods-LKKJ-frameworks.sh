@@ -118,6 +118,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYText/YYText.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/swiftScan/swiftScan.framework"
 fi
@@ -138,6 +139,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYText/YYText.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/swiftScan/swiftScan.framework"
 fi

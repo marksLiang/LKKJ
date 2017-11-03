@@ -26,12 +26,14 @@ class MyAdressViewModel: NSObject {
     }
     
     /// 添加收货地址
-    class func addAddress(_ name: String, _ phone: String, _ address: String, _ state: String) {
+    class func addAddress(_ name: String, _ phone: String, _ address: String, _ state: String, result: @escaping (_ result: Bool)->()) {
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/add_save", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "name": name, "phone": phone, "address": address, "state": state]) { (resultModel) in
             if resultModel?.status == 200 {
-                CommonFunction.HUD(resultModel?.msg ?? "添加成功", type: .success)
+                MBProgressHUD.lk_showSuccess(status: resultModel?.msg ?? "添加成功")
+                result(true)
             } else {
-                CommonFunction.HUD(resultModel?.msg ?? "添加失败", type: .error)
+                MBProgressHUD.lk_showError(status: resultModel?.msg ?? "添加失败")
+                result(false)
             }
         }
     }
