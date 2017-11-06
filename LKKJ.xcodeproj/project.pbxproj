@@ -2408,6 +2408,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ProjectFramework/ThirdParty/AliSDKFile",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ProjectFramework/Procject-Header.h";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2454,6 +2457,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ProjectFramework/ThirdParty/AliSDKFile",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ProjectFramework/Procject-Header.h";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
