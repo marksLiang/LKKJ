@@ -8,8 +8,16 @@
 
 import UIKit
 
+enum ChangeInfomationType {
+    case none
+    case nickname
+    case password
+}
+
 class ChangeInfomation: MyInfomationBase {
     var info: String?
+    var type: ChangeInfomationType = .none
+    
     typealias EditCompletion = (_ nickname: String) -> Void
     var completion:EditCompletion? = nil
     
@@ -44,8 +52,8 @@ extension ChangeInfomation {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeInfomationCell", for: indexPath) as! ChangeInfomationCell
-        if info?.lengthOfBytes(using: .utf8) == 11 {
-            cell.textField.keyboardType = .phonePad
+        if self.type == .password {
+            cell.textField.keyboardType = .numberPad
         } else {
             cell.textField.keyboardType = .default
         }

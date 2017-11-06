@@ -123,4 +123,9 @@ extension UIViewController {
         }
         
     }
+    
+    /// 隐藏等待 HUD
+    func lk_hideLoadingIndicator() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
 }

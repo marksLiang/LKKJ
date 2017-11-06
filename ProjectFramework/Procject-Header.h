@@ -75,4 +75,4 @@
 #import "SDCycleScrollView.h"       //轮播图
 
 #import "UIImage+DAExtension.h"
-
+#import "UITableView+BatchUpdates.h"

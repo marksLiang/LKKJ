@@ -128,6 +128,7 @@ extension MyInfomation {
         case 1:
             let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeInfomation", Identifier: "ChangeInfomation") as! ChangeInfomation
             vc.info = self.userInfo?.nickname
+            vc.type = .nickname
             vc.completion = {(result) in
                 let cell = tableView.cellForRow(at: indexPath)
                 cell?.detailTextLabel?.text = result
@@ -136,6 +137,7 @@ extension MyInfomation {
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeInfomation", Identifier: "ChangeInfomation") as! ChangeInfomation
+            vc.type = .password
             vc.info = self.userInfo?.phone
             vc.completion = {(result) in
                 let cell = tableView.cellForRow(at: indexPath)

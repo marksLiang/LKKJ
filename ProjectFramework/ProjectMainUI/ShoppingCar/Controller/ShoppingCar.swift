@@ -234,6 +234,7 @@ extension ShoppingCar {
                 self.selectArray.remove(at: (self.selectArray.index(of: model))!)
             }
             self.dataArray.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [IndexPath(row:indexPath.row, section: 0)], with: .left)
             self.totalPrice()
             self.verityAllSelectState()

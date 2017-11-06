@@ -26,6 +26,11 @@
 		049E0CDD1FAAFA6000F06B2A /* UIImage+DAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */; };
 		049E0CDF1FAB078100F06B2A /* MyAdressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */; };
 		049E0CE11FAB079600F06B2A /* MyAdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049E0CE01FAB079600F06B2A /* MyAdressModel.swift */; };
+		04ACE8791FB008D100373E73 /* MyOderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE8781FB008D100373E73 /* MyOderViewModel.swift */; };
+		04ACE87B1FB00E1100373E73 /* MyCollectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE87A1FB00E1100373E73 /* MyCollectViewModel.swift */; };
+		04ACE87D1FB00E2E00373E73 /* MyCollectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE87C1FB00E2E00373E73 /* MyCollectModel.swift */; };
+		04ACE8831FB045C200373E73 /* UITableView+BatchUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE8821FB045C200373E73 /* UITableView+BatchUpdates.m */; };
+		04ACE8851FB0507400373E73 /* MyOderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE8841FB0507400373E73 /* MyOderModel.swift */; };
 		04AF9E311FAC43D0007C72C2 /* MyAddressEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E301FAC43D0007C72C2 /* MyAddressEdit.swift */; };
 		04AF9E331FAC4439007C72C2 /* MyAddressEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */; };
 		04AF9E351FAC47A2007C72C2 /* MyAddressEditDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF9E341FAC47A2007C72C2 /* MyAddressEditDetailCell.swift */; };
@@ -300,6 +305,12 @@
 		049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DAExtension.m"; sourceTree = "<group>"; };
 		049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressViewModel.swift; sourceTree = "<group>"; };
 		049E0CE01FAB079600F06B2A /* MyAdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressModel.swift; sourceTree = "<group>"; };
+		04ACE8781FB008D100373E73 /* MyOderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOderViewModel.swift; sourceTree = "<group>"; };
+		04ACE87A1FB00E1100373E73 /* MyCollectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectViewModel.swift; sourceTree = "<group>"; };
+		04ACE87C1FB00E2E00373E73 /* MyCollectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectModel.swift; sourceTree = "<group>"; };
+		04ACE8811FB045C200373E73 /* UITableView+BatchUpdates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+BatchUpdates.h"; sourceTree = "<group>"; };
+		04ACE8821FB045C200373E73 /* UITableView+BatchUpdates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BatchUpdates.m"; sourceTree = "<group>"; };
+		04ACE8841FB0507400373E73 /* MyOderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOderModel.swift; sourceTree = "<group>"; };
 		04AF9E301FAC43D0007C72C2 /* MyAddressEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressEdit.swift; sourceTree = "<group>"; };
 		04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAddressEdit.storyboard; sourceTree = "<group>"; };
 		04AF9E341FAC47A2007C72C2 /* MyAddressEditDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressEditDetailCell.swift; sourceTree = "<group>"; };
@@ -784,6 +795,8 @@
 				044A73421FA9BCAF00B2C1D2 /* MyInfoModel.swift */,
 				049E0CD81FAAC61A00F06B2A /* MyMessageModel.swift */,
 				049E0CE01FAB079600F06B2A /* MyAdressModel.swift */,
+				04ACE87C1FB00E2E00373E73 /* MyCollectModel.swift */,
+				04ACE8841FB0507400373E73 /* MyOderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -794,6 +807,8 @@
 				044A73401FA9BC9700B2C1D2 /* MyInfoViewModel.swift */,
 				049E0CD61FAAC60900F06B2A /* MyMessageViewModel.swift */,
 				049E0CDE1FAB078100F06B2A /* MyAdressViewModel.swift */,
+				04ACE87A1FB00E1100373E73 /* MyCollectViewModel.swift */,
+				04ACE8781FB008D100373E73 /* MyOderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -805,6 +820,15 @@
 				049E0CDC1FAAFA6000F06B2A /* UIImage+DAExtension.m */,
 			);
 			path = ImageCompress;
+			sourceTree = "<group>";
+		};
+		04ACE8801FB045A400373E73 /* OC */ = {
+			isa = PBXGroup;
+			children = (
+				04ACE8811FB045C200373E73 /* UITableView+BatchUpdates.h */,
+				04ACE8821FB045C200373E73 /* UITableView+BatchUpdates.m */,
+			);
+			path = OC;
 			sourceTree = "<group>";
 		};
 		04AF9E3D1FAC5FC4007C72C2 /* Common */ = {
@@ -828,6 +852,7 @@
 		04BA84A51FAC6885002630F4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				04ACE8801FB045A400373E73 /* OC */,
 				04BA84A81FAC6C50002630F4 /* HUD.xcassets */,
 				04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */,
 			);
@@ -2104,6 +2129,7 @@
 				04AF9E351FAC47A2007C72C2 /* MyAddressEditDetailCell.swift in Sources */,
 				2E12CB141E6F1E6F009527BA /* TZImagePickerController.m in Sources */,
 				5F29FEA71F7A5E9B004B41FE /* LoginViewModel.swift in Sources */,
+				04ACE87B1FB00E1100373E73 /* MyCollectViewModel.swift in Sources */,
 				6F4904C81F186DBA00F74691 /* UIViewController+Extension.swift in Sources */,
 				2E12CB111E6F1E6F009527BA /* TZAssetModel.m in Sources */,
 				6FF51D2C1EBD7E9E00021790 /* MCWebViewController.swift in Sources */,
@@ -2124,6 +2150,8 @@
 				5F0BF2FE1FA807FF00089F74 /* ChangePayPassword.swift in Sources */,
 				5F6A7E161F78B00D008C26C9 /* GoodsListCell.swift in Sources */,
 				5F29FEA31F7A5E90004B41FE /* ForgotPasswordCell.swift in Sources */,
+				04ACE8831FB045C200373E73 /* UITableView+BatchUpdates.m in Sources */,
+				04ACE8791FB008D100373E73 /* MyOderViewModel.swift in Sources */,
 				5FCB6B6F1F6FC98400F2857E /* TADotView.m in Sources */,
 				5F0582F71F74EC010086BC0A /* MyHeadUIView.swift in Sources */,
 				2E12CABC1E6F1E67009527BA /* Reachability.m in Sources */,
@@ -2204,6 +2232,7 @@
 				5FCB6B781F6FD5A300F2857E /* HomeMenuCell.swift in Sources */,
 				6F4904C61F186DBA00F74691 /* UITextField+Extension.swift in Sources */,
 				5F6A7E121F78AC41008C26C9 /* GoodsList.swift in Sources */,
+				04ACE87D1FB00E2E00373E73 /* MyCollectModel.swift in Sources */,
 				049E0CD71FAAC60900F06B2A /* MyMessageViewModel.swift in Sources */,
 				0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */,
 				6F4904C71F186DBA00F74691 /* UIToolbar+Extension.swift in Sources */,
@@ -2221,6 +2250,7 @@
 				5FCB6B851F71129200F2857E /* HomeGoodsCell.swift in Sources */,
 				04AF9E421FAC6022007C72C2 /* CityChooseView.swift in Sources */,
 				5F1D51951F720A260018FD31 /* ClassTableviewCell.swift in Sources */,
+				04ACE8851FB0507400373E73 /* MyOderModel.swift in Sources */,
 				04AF9E371FAC47C1007C72C2 /* MyAddressEditCell.swift in Sources */,
 				2E12CAB91E6F1E67009527BA /* MBProgressHUD+NJ.m in Sources */,
 				5F94F1401F7A46D200A8A2DA /* RegisterModel.swift in Sources */,

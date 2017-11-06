@@ -77,16 +77,20 @@ class GoodsDetail: CustomTemplateViewController {
                     if (self?.collectionBtn.isSelected)! {
                         GoodsDetailViewModel.collet(collet: .delete, goodsid: self?.model?.goodsid ?? "") { (reslut) in
                             self?.collectionBtn.isSelected = !reslut
+                            if reslut {
+                                MBProgressHUD.lk_showSuccess(status: "已取消收藏")
+                            } else {
+                                MBProgressHUD.lk_showSuccess(status: "取消收藏失败")
+                            }
                         }
                     } else {
                         GoodsDetailViewModel.collet(collet: .add, goodsid: self?.model?.goodsid ?? "") { (reslut) in
                             self?.collectionBtn.isSelected = reslut
                             if reslut {
-                                CommonFunction.HUD("收藏成功", type: .success)
+                                MBProgressHUD.lk_showSuccess(status: "收藏成功")
                             } else {
-                                CommonFunction.HUD("收藏失败", type: .error)
+                                MBProgressHUD.lk_showSuccess(status: "收藏失败")
                             }
-                            
                         }
                     }
                 } else {
@@ -177,7 +181,12 @@ class GoodsDetail: CustomTemplateViewController {
             button.rx.tap.subscribe( {[weak self] (value) in
                 let buttonTitle = button.titleLabel!.text
                 if buttonTitle == "立即购买" {
-                    
+                    let goodsid = self?.model?.goodsid ?? ""
+                    let goods = [[goodsid: "1"] as NSDictionary] as NSArray
+                    let json = goods.mj_JSONString() ?? ""
+//                    let json = "[{\(goodsid):\(String(1))}]"
+                    print(json)
+                    MyOderViewModel.submitOder(accepterid: "39", goodsArr: json)
                 } else if buttonTitle == "加入购物车" {
                     GoodsDetailViewModel.addGoodsCar(goodsid: (self?.model?.goodsid)!, count: 1)
                 } else {

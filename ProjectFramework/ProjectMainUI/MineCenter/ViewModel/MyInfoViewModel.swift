@@ -60,14 +60,12 @@ class MyInfoViewModel: NSObject {
     }
     
     class func changeLoginPassword(_ password: String, _ new_pwd: String, _ check_pwd: String, result:@escaping ((Bool)->())) {
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/save_pwd", isHUD: false, isHUDMake: false, parameters: ["password": password, "new_pwd": new_pwd, "check_pwd": check_pwd]) { (resultModel) in
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/save_pwd", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "password": password, "new_pwd": new_pwd, "check_pwd": check_pwd]) { (resultModel) in
             if resultModel?.status == 200 {
-                CommonFunction.HUD(resultModel?.msg ?? "修改成功", type: .success)
-                debugPrint(resultModel?.msg ?? "修改成功")
+                MBProgressHUD.lk_showSuccess(status: resultModel?.msg ?? "修改成功")
                 result(true)
             } else {
-                CommonFunction.HUD(resultModel?.msg ?? "修改失败", type: .success)
-                debugPrint(resultModel?.msg ?? "修改失败")
+                MBProgressHUD.lk_showError(status: resultModel?.msg ?? "修改失败")
                 result(false)
             }
         }

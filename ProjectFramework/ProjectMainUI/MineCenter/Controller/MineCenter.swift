@@ -23,8 +23,8 @@ class MineCenter: UIViewController {
     
     fileprivate let identifier="MyCell"
     fileprivate let _MyHeadUIView=MyHeadUIView()
-    fileprivate var ImageList = ["Order","shop","information","myaddress","myCollction","mysetting","contact","Exit"]
-    fileprivate var TitleList = ["我的订单","我的店铺","我的消息","我的地址","我的收藏","系统设置","联系客服","安全退出"]
+    fileprivate var ImageList = ["Order","information","myaddress","myCollction","mysetting","contact","Exit"]
+    fileprivate var TitleList = ["我的订单","我的消息","我的地址","我的收藏","系统设置","联系客服","安全退出"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "个人中心"
@@ -86,19 +86,19 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MyOder", Identifier: "MyOder") as! MyOder
                 self?.navigationController?.show(vc, sender: self)
                 break;
-            case 102:
+            case 101:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessgae", Identifier: "MyMessgae") as! MyMessgae
                 self?.navigationController?.show(vc, sender: self)
                 break;
-            case 103:
+            case 102:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MyAdress", Identifier: "MyAdress") as! MyAdress
                 self?.navigationController?.show(vc, sender: self)
                 break;
-            case 104:
+            case 103:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MyCollect", Identifier: "MyCollect") as! MyCollect
                 self?.navigationController?.show(vc, sender: self)
                 break;
-            case 105:
+            case 104:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
                 self?.navigationController?.show(vc, sender: self)
                 
