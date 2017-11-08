@@ -34,7 +34,7 @@ extension MySetting {
         cell.textLabel?.text = titles[indexPath.row]
         if indexPath.row == 0 {
             cell.accessoryType = .none
-            cell.detailTextLabel?.text = "9.9M"
+            cell.detailTextLabel?.text = String(format: "%.2f", self.fileSizeOfCache())
             
         } else {
            cell.detailTextLabel?.text = ""
@@ -44,5 +44,16 @@ extension MySetting {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+
+            UIAlertView.show(withTitle: "温馨提示", message: "您确定要清除缓存吗？", cancelButtonTitle: "取消", otherButtonTitles: ["确定"], tap: { (alertView, index) in
+                if index == 1 {
+                    self.clearCache()
+                    let cell = tableView.cellForRow(at: indexPath)
+                    cell?.detailTextLabel?.text = "\(self.fileSizeOfCache())M"
+                    MBProgressHUD.lk_showSuccess(status: "已清除")
+                }
+            })
+        }
     }
 }

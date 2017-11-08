@@ -15,15 +15,15 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - CWStatusBarNotification (2.3.5)
-  - CYLTabBarController (1.13.2)
+  - CYLTabBarController (1.14.2)
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
-  - IQKeyboardManager (4.0.13)
+  - IQKeyboardManager (5.0.6)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.15)
   - pop (1.0.10)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
@@ -31,13 +31,13 @@ PODS:
     - RxCocoa (~> 3.0)
     - RxSwift (~> 3.0)
   - RxSwift (3.6.1)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
-  - SnapKit (3.2.0)
+  - SDWebImage (4.2.1):
+    - SDWebImage/Core (= 4.2.1)
+  - SDWebImage/Core (4.2.1)
   - swiftScan (1.0.8)
-  - SwiftTheme (0.3.3)
+  - SwiftTheme (0.4.0)
   - SwiftyJSON (3.1.4)
+  - UIAlertView+Blocks (0.9)
   - YYText (1.0.7)
 
 DEPENDENCIES:
@@ -54,11 +54,11 @@ DEPENDENCIES:
   - RxCocoa (~> 3.0)
   - RxDataSources (~> 1.0)
   - RxSwift (~> 3.0)
-  - SDWebImage (~> 3.8)
-  - SnapKit
+  - SDWebImage
   - swiftScan (from `https://github.com/CNKCQ/swiftScan.git`, branch `Swift3.0`)
   - SwiftTheme
   - SwiftyJSON
+  - UIAlertView+Blocks
   - YYText
 
 EXTERNAL SOURCES:
@@ -74,24 +74,24 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
-  CYLTabBarController: 1ea13266ead94d45427c9d7ff8fa6e06d6835d23
+  CYLTabBarController: 5eac1940e20aa934a609ecec38837da63a41dcfe
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
-  IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
+  IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
   swiftScan: 2dc76303bc7c2dcb7bde9c539f9bd6a7520abc8e
-  SwiftTheme: 85f84747a48749b5b3df7c3e96fc0b1d45677d30
+  SwiftTheme: 548eff28a606d0975e04b2e708b879d7eea660f6
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 21dc50dd1349118f6de82e42a87e0e4499dd330e
+PODFILE CHECKSUM: 997a41ac2ff85b845ad71242629e40d6d8ac4659
 
 COCOAPODS: 1.3.1

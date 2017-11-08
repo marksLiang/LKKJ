@@ -28,11 +28,11 @@ class MyAddressEdit: UITableViewController {
         let phoneCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! MyAddressEditCell
         let phone = phoneCell.contentTextField.text
         let areaCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0))
-        let area = areaCell?.detailTextLabel?.text
+        let area = areaCell?.detailTextLabel?.text == "请选择" ? "" : areaCell?.detailTextLabel?.text
         let detailCell = tableView.cellForRow(at: IndexPath.init(row: 3, section: 0)) as! MyAddressEditDetailCell
         let detailAddress = detailCell.detailAddressTextField.text
         let switchCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! MyAddressSetDefaultCell
-        let isOn = switchCell.switchButton.isOn
+        let isOn = switchCell.switchButton.isOn ? "1" : "0"
         
         guard let kname = name,
             let kphone = phone,
@@ -41,23 +41,43 @@ class MyAddressEdit: UITableViewController {
             return
         }
         
+        let ocPhoneString = kphone as NSString
+        if !ocPhoneString.isValidPhoneNumber() {
+            MBProgressHUD.lk_showError(status: "请正确输入手机号")
+            return
+        }
+        
         if kname.lengthOfBytes(using: .utf8) == 0 ||
             kphone.lengthOfBytes(using: .utf8) == 0 ||
-            karea.lengthOfBytes(using: .utf8) == 0 ||
             kdetailAddress.lengthOfBytes(using: .utf8) == 0 {
             MBProgressHUD.lk_showError(status: "请填写完整")
             return 
         }
-
-        MyAdressViewModel.addAddress(kname, kphone, karea + kdetailAddress, String(isOn)) { (result) in
-            if result {
-                self.navigationController?.popViewController(animated: true)
-                if self.needRefreshAddressList != nil {
-                    self.needRefreshAddressList!()
+        
+        if address == nil {
+            // 新增地址
+            MyAdressViewModel.addAddress(kname, kphone, karea + kdetailAddress, isOn) { (result) in
+                if result {
+                    self.navigationController?.popViewController(animated: true)
+                    if self.needRefreshAddressList != nil {
+                        self.needRefreshAddressList!()
+                    }
+                    
                 }
-                
+            }
+        } else {
+            // 修改地址
+            MyAdressViewModel.changeAddress((address?.accepterid)!, (address?.name)!, (address?.phone)!, (address?.address)!, isOn) { (result) in
+                if result {
+                    self.navigationController?.popViewController(animated: true)
+                    if self.needRefreshAddressList != nil {
+                        self.needRefreshAddressList!()
+                    }
+                    
+                }
             }
         }
+        
     }
     
     private func setupSubViews() {
@@ -86,6 +106,8 @@ extension MyAddressEdit {
                 cell.contentTextField.placeholder = itemsPlaceholder[indexPath.row]
                 if indexPath.row == 1 {
                     cell.contentTextField.keyboardType = .numberPad
+                    cell.contentTextField.tag = 110
+                    cell.contentTextField.delegate = self
                 }
                 
                 if address != nil {
@@ -121,7 +143,7 @@ extension MyAddressEdit {
             // 设为默认地址
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyAddressSetDefaultCell", for: indexPath) as! MyAddressSetDefaultCell
             if address != nil {
-                cell.switchButton.isOn = Bool((address?.state)!)!
+                cell.switchButton.isOn = address?.state == "1" ? true : false
             }
             
             cell.titleLabel.text = "设为默认地址"
@@ -176,6 +198,20 @@ extension MyAddressEdit {
         }
         return 0.1
     }
+}
+
+extension MyAddressEdit: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 110 {
+            let ocString = string as NSString
+            if string != "" {
+                return ocString.isMatchRegex("^[0-9]+$")
+            }
+        }
+        return true
+    }
+    
 }
 
 // MARK: - UIScrollViewDelegate

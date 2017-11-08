@@ -76,7 +76,7 @@ class MyCollect: CustomTemplateViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetails", Identifier: "GoodsDetails") as! GoodsDetails
         let model = viewModel.model.goods_like![indexPath.row]
         vc.model = model.goodsinfo
         self.navigationController?.show(vc, sender: self)

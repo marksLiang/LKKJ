@@ -61,10 +61,10 @@ class GoodsList: CustomTemplateViewController {
         self.view.addSubview(Menuview!)
         
         let model1       = MenuModel()
-        for i:Int in 0..<4 {
+        for i:Int in 0..<1 {
             let onemol   = OneMenuModel()
             onemol.type  = 1
-            onemol.name  = "全部"
+            onemol.name  = "综合排序"
             onemol.value = i.description
             model1.OneMenu.append(onemol)
         }
@@ -82,7 +82,7 @@ class GoodsList: CustomTemplateViewController {
         Menuview?.Callback_SelectedValue { (name, value,type) in
             print(name)
             if type == 1 {
-                
+                self.getHttpData(select: "1")
             } else {
                 self.getHttpData(select: "\(value)")
             }
@@ -108,7 +108,7 @@ class GoodsList: CustomTemplateViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetails", Identifier: "GoodsDetails") as! GoodsDetails
         vc.model = self.viewModel.model.goods_list![indexPath.row]
         self.navigationController?.show(vc, sender: self)
     }

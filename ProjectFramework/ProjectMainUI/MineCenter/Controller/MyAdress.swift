@@ -115,7 +115,6 @@ class MyAdress: CustomTemplateViewController {
         self.numberOfSections = 1
         self.tableViewheightForRowAt = 125
         self.header.isHidden = true
-//        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
     }
 
 }

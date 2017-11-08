@@ -91,7 +91,7 @@ class Home: CustomTemplateViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetail", Identifier: "GoodsDetail") as! GoodsDetail
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetails", Identifier: "GoodsDetails") as! GoodsDetails
         vc.model = self.viewModel.model.index_goods![indexPath.row]
         self.navigationController?.show(vc, sender: self)
     }

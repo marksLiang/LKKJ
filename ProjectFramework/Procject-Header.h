@@ -69,10 +69,12 @@
 #import "XHStarRateView.h"         //评分星星
 #import "PanoramaViewController.h"      // 全景图
 #import "HcdPopMenu.h"              //动画菜单
-#import "JLPhotoBrowser.h"          //图片浏览
 #import "ZFChooseTimeViewController.h"//酒店时间选择
 #import "DOPDropDownMenu.h"           //多级菜单
 #import "SDCycleScrollView.h"       //轮播图
 
 #import "UIImage+DAExtension.h"
 #import "UITableView+BatchUpdates.h"
+#import "NSString+Verification.h"
+#import "NSString+SDWebImageBugRepair.h"
+#import <UIAlertView_Blocks/UIAlertView+Blocks.h>
