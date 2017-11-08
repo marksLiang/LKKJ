@@ -9,20 +9,47 @@
 import UIKit
 
 class MyOderDetails: UITableViewController {
-
+    
+    var oderModel: OderDetailsModel?
+    var goodsModel: index_goodsList?
+    var goodsNumber = 0
+    
     fileprivate let normalCellIdentifier = "normalCellIdentifier"
-    fileprivate let sectionTitles = ["", "收件人信息", "商品信息"]
-    fileprivate let rowHeights: [CGFloat] = [44.0, 54.0, 120.0]
-    fileprivate let oderTitles = ["订单号：", "下单账号：","订单状态："]
-    fileprivate let oderContents = ["20171026", "1333338888888", "代发货"]
-    fileprivate let receiverInfos = ["namge" : "王尼玛", "电话" : "17878787878", "地址" : "南宁市 青秀区 xxxxxxxxxxxxxxxxxxxxxxxxx", "买家备注" : "无"]
-    fileprivate let rows = [3, 4, 1]
+    fileprivate var sectionTitles = [String]()
+    fileprivate var rowHeights = [CGFloat]()
+    fileprivate var rows = [Int]()
+
+    fileprivate var oderTitles = [String]()
+    fileprivate var oderContents = [String]()
+    fileprivate var receiverInfos = [String: String]()
     fileprivate let titlFontSize: CGFloat = 14.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSubViews()
+        serializeData()
+    }
+}
+
+// MARK: - Custom Method
+extension MyOderDetails {
+    
+    fileprivate func setupSubViews() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "处理", style: .plain, target: self, action: #selector(rightBarButtonItemEvent))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: normalCellIdentifier)
-//        tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+    }
+    
+    fileprivate func serializeData() {
+        guard let oder = self.oderModel else {
+            return
+        }
+        self.rowHeights = [44.0, 54.0, 120.0]
+        self.rows = [3, 4, 1]
+        self.sectionTitles = ["", "收件人信息", "商品信息"]
+        self.oderTitles = ["订单号：", "下单账号：","订单状态："]
+        self.oderContents = [oder.orderlistid, oder.phone, oder.ispay == "0" ? "未付款" : "已付款"]
+        self.receiverInfos = ["姓名" : oder.name, "电话" : oder.phone, "地址" : oder.address, "买家备注" : "无"]
     }
     
     @objc fileprivate func rightBarButtonItemEvent() {
@@ -32,7 +59,6 @@ class MyOderDetails: UITableViewController {
 
 // MARK: - Table view data source
 extension MyOderDetails {
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -72,7 +98,10 @@ extension MyOderDetails {
                 returnCell = cell
             }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyOderGoodInfoCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyOderGoodInfoCell") as! MyOderGoodInfoCell
+            cell.goodsImageView.ImageLoad(PostUrl: self.goodsModel?.goodspic ?? "")
+            cell.titleLabel.text = self.goodsModel?.content ?? ""
+            cell.numberLabel.text = "数量：\(self.goodsNumber)"
             returnCell = cell
         }
         returnCell?.textLabel?.font = UIFont.systemFont(ofSize: titlFontSize)

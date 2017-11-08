@@ -28,7 +28,7 @@ class HomeGoodsCell: UITableViewCell {
         let model = cell as! index_goodsList
 //        debugPrint(model.title,model.goodsid,model.content)
         goodsImage.ImageLoad(PostUrl: model.goodspic)
-        goosTitle.text = model.title
+        goosTitle.text = model.content
         goodsOldPrice.text = model.cashtype + model.old_price
         goodsNewPrice.text = model.price
     }

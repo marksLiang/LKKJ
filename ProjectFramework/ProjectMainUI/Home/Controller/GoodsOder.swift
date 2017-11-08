@@ -13,38 +13,62 @@ class GoodsOder: UITableViewController {
     var model: index_goodsList?
     var goodsNumber = 1
     fileprivate let viewModel = MyAdressViewModel()
+    fileprivate let oderViewModel = MyOderViewModel()
+    fileprivate var defaultAddress: AdressModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
-        getAdress()
+        getDefaultAddress()
     }
+}
+
+// MARK: - Custom Method
+extension GoodsOder {
     
     @objc fileprivate func submitButtonEvent() {
-        print(#function)
+        let goodsid = self.model?.goodsid ?? ""
+        let goods = [[goodsid: "\(goodsNumber)"] as NSDictionary] as NSArray
+        let json = goods.mj_JSONString() ?? ""
+        self.lk_showLoadingIndicator(status: "订单生成中")
+        oderViewModel.submitOder(accepterid: self.defaultAddress?.accepterid ?? "", goodsArr: json) { (result) in
+            self.lk_hideLoadingIndicator()
+            if result {
+                let vc = CommonFunction.ViewControllerWithStoryboardName("MyOderDetails", Identifier: "MyOderDetails") as! MyOderDetails
+                vc.oderModel = self.oderViewModel.oderDetailsModel.orderlist
+                vc.goodsModel = self.model
+                vc.goodsNumber = self.goodsNumber
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
-    private func getAdress() {
+    /// 获取默认地址
+    fileprivate func getDefaultAddress() {
         viewModel.getMyAdress { (result) in
             if result {
-                var address: AdressModel? = nil
                 for addr in self.viewModel.model.address! {
                     if addr.state == "1" {
-                        address = addr
+                        self.defaultAddress = addr
                         break
                     }
                 }
-                guard let defaultAddress = address else {
-                    return
+                if self.defaultAddress == nil {
+                    self.defaultAddress = self.viewModel.model.address?.first
                 }
-                let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! GoodsOderAdressCell
-                cell.nameLabel.text = defaultAddress.name
-                cell.phoneLabel.text = defaultAddress.phone
-                cell.addressLabel.text = defaultAddress.address
+                
+                self.setAddress(address: self.defaultAddress!)
             }
-            
         }
+    }
+    
+    /// 设置地址
+    fileprivate func setAddress(address: AdressModel) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! GoodsOderAdressCell
+        cell.nameLabel.text = address.name
+        cell.phoneLabel.text = address.phone
+        cell.addressLabel.text = address.address
     }
 }
 
@@ -52,16 +76,10 @@ class GoodsOder: UITableViewController {
 extension GoodsOder {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 2
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 100 : 160
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsOderAdressCell", for: indexPath) as! GoodsOderAdressCell
             cell.selectionStyle = .none
@@ -82,6 +100,21 @@ extension GoodsOder {
             cell.submitButton.layer.borderColor = CommonFunction.SystemColor().cgColor
             cell.submitButton.addTarget(self, action: #selector(submitButtonEvent), for: .touchUpInside)
             return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == 0 ? 100 : 160
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let vc = CommonFunction.ViewControllerWithStoryboardName("MyAdress", Identifier: "MyAdress") as! MyAdress
+            vc.oderAddressSelectedCompletion = { (address) in
+                self.defaultAddress = address
+                self.setAddress(address: address)
+            }
+            self.navigationController?.show(vc, sender: self)
         }
     }
 }

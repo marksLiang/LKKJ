@@ -62,7 +62,6 @@ class MyAddressEdit: UITableViewController {
                     if self.needRefreshAddressList != nil {
                         self.needRefreshAddressList!()
                     }
-                    
                 }
             }
         } else {
@@ -73,11 +72,9 @@ class MyAddressEdit: UITableViewController {
                     if self.needRefreshAddressList != nil {
                         self.needRefreshAddressList!()
                     }
-                    
                 }
             }
         }
-        
     }
     
     private func setupSubViews() {

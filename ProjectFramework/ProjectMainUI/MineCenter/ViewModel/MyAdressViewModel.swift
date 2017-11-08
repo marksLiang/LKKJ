@@ -61,12 +61,12 @@ class MyAdressViewModel: NSObject {
     }
     
     /// 设为默认地址
-    class func setAddressToDefault(_ accepterid: String) {
+    func setAddressToDefault(_ accepterid: String) {
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/state", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "accepterid": accepterid]) { (resultModel) in
             if resultModel?.status == 200 {
-                CommonFunction.HUD(resultModel?.msg ?? "删除成功", type: .success)
+                MBProgressHUD.lk_showSuccess(status: resultModel?.msg ?? "已设置为默认地址")
             } else {
-                CommonFunction.HUD(resultModel?.msg ?? "删除失败", type: .error)
+                MBProgressHUD.lk_showError(status: resultModel?.msg ?? "默认地址设置失败")
             }
         }
     }

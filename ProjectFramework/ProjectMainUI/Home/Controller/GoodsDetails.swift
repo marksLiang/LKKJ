@@ -73,10 +73,13 @@ class GoodsDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "商品详情"
-        
         setupSubViews()
         setupBottomBar()
-        
+        fetchColoectStatus()
+    }
+    
+    /// 获取收藏状态
+    private func fetchColoectStatus() {
         GoodsDetailViewModel.collet(collet: .status, goodsid: model?.goodsid ?? "") { (reslut) in
             self.collectionBtn.isSelected = reslut
         }
@@ -102,17 +105,10 @@ extension GoodsDetails {
             button.setTitleColor(UIColor.white, for: .normal)
             button.rx.tap.subscribe( {[weak self] (value) in
                 let buttonTitle = button.titleLabel!.text
-                if buttonTitle == "立即购买" { 
-//                    let goodsid = self?.model?.goodsid ?? ""
-//                    let goods = [[goodsid: "1"] as NSDictionary] as NSArray
-//                    let json = goods.mj_JSONString() ?? ""
-//                    //                    let json = "[{\(goodsid):\(String(1))}]"
-//                    print(json)
-//                    MyOderViewModel.submitOder(accepterid: "39", goodsArr: json)
+                if buttonTitle == "立即购买" {
                     let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsOder", Identifier: "GoodsOder") as! GoodsOder
                     vc.model = self?.model
                     self?.navigationController?.show(vc, sender: self)
-                    
                 } else if buttonTitle == "加入购物车" {
                     GoodsDetailViewModel.addGoodsCar(goodsid: (self?.model?.goodsid)!, count: 1)
                 } else {
@@ -135,11 +131,10 @@ extension GoodsDetails {
         
         // 商品详情
         let url = URL(string: model?.infopic ?? "")
-        UIImageView().sd_setImage(with: url, completed: { (image, error, _, _) in
+        self.tableFooterView.sd_setImage(with: url, completed: { (image, error, _, _) in
             if error == nil && image != nil {
                 self.tableFooterView.backgroundColor = UIColor.white
-                self.tableFooterView.image = image
-                self.tableFooterView.contentMode = .redraw
+                self.tableFooterView.contentMode = .scaleToFill
                 var bounds = self.tableFooterView.bounds
                 bounds.size.height = (image?.size.height)!
                 self.tableFooterView.bounds = bounds

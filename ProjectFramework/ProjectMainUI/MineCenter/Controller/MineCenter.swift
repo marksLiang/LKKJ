@@ -24,11 +24,13 @@ class MineCenter: UIViewController {
     fileprivate let identifier="MyCell"
     fileprivate let _MyHeadUIView=MyHeadUIView()
     fileprivate var ImageList = ["Order","information","myaddress","myCollction","mysetting","contact","Exit"]
-    fileprivate var TitleList = ["我的订单","我的消息","我的地址","我的收藏","系统设置","联系客服","安全退出"]
+    fileprivate var TitleList = ["我的订单","我的消息","我的地址","我的收藏","系统设置","联系客服"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "个人中心"
-        // Do any additional setup after loading the view.
+        if Global_UserInfo.IsLogin {
+            TitleList.append("安全退出")
+        }
         self.initUI()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,7 @@ class MineCenter: UIViewController {
             self._MyHeadUIView.LabName.text = Global_UserInfo.nickname
         }else{
             self._MyHeadUIView.Imgbtn?.image = UIImage.init(named: "userIcon_defualt")
+            self._MyHeadUIView.LabName.text = "登录"
         }
     }
     private func initUI()->Void{
@@ -147,6 +150,9 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
                     self?.TitleList.removeLast()
                     self?.ImageList.removeLast()
                     self?.tableView.reloadData()
+                    self?._MyHeadUIView.LabName.text = "登录"
+                    // 需要刷新购物车
+                    CommonFunction.Instance.isNeedRefreshShoppingCar = true
                     //发送退出通知
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "exit"), object: nil, userInfo: nil)
                 }, Cancel_Callback: nil)

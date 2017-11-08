@@ -9,14 +9,16 @@
 import UIKit
 
 class MyOderViewModel {
-    
-    class func submitOder(accepterid: String, goodsArr: String) {
-        
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Buy/orderlist_add", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "accepterid": accepterid, "goodsArr": goodsArr]) { (result) in
-            if result?.status == 200 {
+    var oderDetailsModel = MyOderDetailsModel()
+    func submitOder(accepterid: String, goodsArr: String, reslut:@escaping ((Bool) -> Void)) {
+        CommonFunction.Global_Post(entity: MyOderDetailsModel(), IsListData: false, url: HttpsUrl + "index.php/Buy/orderlist_add", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "accepterid": accepterid, "goodsArr": goodsArr]) { (resultModel) in
+            if resultModel?.status == 200 {
+                self.oderDetailsModel = resultModel?.data as! MyOderDetailsModel
                 MBProgressHUD.lk_showSuccess(status: "订单添加成功")
+                reslut(true)
             } else {
-                MBProgressHUD.lk_showSuccess(status: result?.msg ?? "订单添加失败")
+                MBProgressHUD.lk_showSuccess(status: resultModel?.msg ?? "订单添加失败")
+                reslut(false)
             }
         }
     }

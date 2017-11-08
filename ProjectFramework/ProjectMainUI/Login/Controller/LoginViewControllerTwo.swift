@@ -95,14 +95,17 @@ class LoginViewControllerTwo: UIViewController
         _ = self._LoginViewModel.LoginResult?.subscribe(onNext: {[weak self] (result) in
             switch result {
             case   .ok: //处理登录成功的业务
+                self?.view.endEditing(true)
+                self?.lk_showLoadingIndicator(status: "登录中..")
                 self?._LoginViewModel.SetLogin( result: { (result) in
+                    // 需要刷新购物车
+                    CommonFunction.Instance.isNeedRefreshShoppingCar = true
+                    self?.lk_hideLoadingIndicator()
                     if(result==true){
-                        
                         //极光推送添加别名
                         JPUSHService.setAlias(Global_UserInfo.userid, callbackSelector: nil, object: self )
                             self?.myCallbackValue?(true)
                             self?.dismiss(animated: true, completion: {
-                            CommonFunction.HUD("登录成功", type: .success)
                           })
                     } 
                 })

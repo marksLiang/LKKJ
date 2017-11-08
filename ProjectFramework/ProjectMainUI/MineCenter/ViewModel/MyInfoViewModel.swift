@@ -54,8 +54,10 @@ class MyInfoViewModel: NSObject {
             print(progress)
         }, success: { (success) in
             print(success)
+            MBProgressHUD.lk_showSuccess(status: "修改成功")
         }) { (failure) in
             print(failure)
+            MBProgressHUD.lk_showError(status: "修改失败")
         }
     }
     

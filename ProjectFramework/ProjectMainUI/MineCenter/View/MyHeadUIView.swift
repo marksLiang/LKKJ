@@ -70,7 +70,7 @@ class MyHeadUIView: UIView {
         self.addSubview(Imgbtn)    //添加图片
         
         LabName=UILabel(frame: CGRect(x: 0, y: Imgbtn.frame.maxY+5, width: CommonFunction.kScreenWidth, height: 20))
-        LabName.text="Hi,给我取个名字吧"
+        LabName.text="登录"
         LabName.contentMode = .center
         LabName.textColor=UIColor.white
         LabName.textAlignment = .center

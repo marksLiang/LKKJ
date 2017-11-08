@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042DB83B1FB2DC9500A0B5DD /* MyOderGoodInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DB83A1FB2DC9500A0B5DD /* MyOderGoodInfoCell.swift */; };
 		0439E6E21FA87B4900DC5BBB /* GoodsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439E6E11FA87B4900DC5BBB /* GoodsDetailViewModel.swift */; };
 		0439E6E31FA8835100DC5BBB /* MyInfomation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF30D1FA8086100089F74 /* MyInfomation.storyboard */; };
 		0439E6E41FA8835700DC5BBB /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0BF3091FA8086000089F74 /* MySetting.storyboard */; };
@@ -271,6 +272,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042DB83A1FB2DC9500A0B5DD /* MyOderGoodInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOderGoodInfoCell.swift; sourceTree = "<group>"; };
 		0439E6E11FA87B4900DC5BBB /* GoodsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDetailViewModel.swift; sourceTree = "<group>"; };
 		043D84B41FA95CDB0056FCB8 /* ShoppingCarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarViewModel.swift; sourceTree = "<group>"; };
 		043D84B61FA99FF00056FCB8 /* ShoppingCarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCarCell.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 		04ACE8801FB045A400373E73 /* OC */ = {
 			isa = PBXGroup;
 			children = (
+				049E0CDA1FAAFA5600F06B2A /* ImageCompress */,
 				04ACE8811FB045C200373E73 /* UITableView+BatchUpdates.h */,
 				04ACE8821FB045C200373E73 /* UITableView+BatchUpdates.m */,
 				0476BFA91FB1581400905C3C /* NSString+Verification.h */,
@@ -1318,6 +1321,7 @@
 				5F6A7E1D1F790019008C26C9 /* MyOderCell.swift */,
 				5F0BF3141FA808C800089F74 /* MyOderDetails.storyboard */,
 				5F0BF3151FA808C800089F74 /* MyOderDetailsCell.swift */,
+				042DB83A1FB2DC9500A0B5DD /* MyOderGoodInfoCell.swift */,
 				5F70DDBD1F944C8A0083EA94 /* MyAdress.storyboard */,
 				5F70DDBF1F9458D70083EA94 /* MyAdressCell.swift */,
 				04AF9E321FAC4439007C72C2 /* MyAddressEdit.storyboard */,
@@ -1404,7 +1408,6 @@
 		6F4904A11F186DBA00F74691 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				049E0CDA1FAAFA5600F06B2A /* ImageCompress */,
 				6F4904A21F186DBA00F74691 /* SwiftExtension */,
 			);
 			path = Extension;
@@ -2076,6 +2079,7 @@
 				27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */,
 				6F4904BA1F186DBA00F74691 /* FMDatabase+Extension.swift in Sources */,
 				6FDB2E0C1EC4612E0092FAFC /* RSADataSigner.m in Sources */,
+				042DB83B1FB2DC9500A0B5DD /* MyOderGoodInfoCell.swift in Sources */,
 				2E12CB161E6F1E6F009527BA /* TZPhotoPreviewCell.m in Sources */,
 				046343AB1FB1B59900369A87 /* GoodsOderAdressCell.swift in Sources */,
 				6FF51D341EBD7E9E00021790 /* QQScanViewController.swift in Sources */,

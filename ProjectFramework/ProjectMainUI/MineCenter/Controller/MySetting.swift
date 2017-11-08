@@ -34,7 +34,7 @@ extension MySetting {
         cell.textLabel?.text = titles[indexPath.row]
         if indexPath.row == 0 {
             cell.accessoryType = .none
-            cell.detailTextLabel?.text = String(format: "%.2f", self.fileSizeOfCache())
+            cell.detailTextLabel?.text = String(format: "%.2f M", self.fileSizeOfCache())
             
         } else {
            cell.detailTextLabel?.text = ""

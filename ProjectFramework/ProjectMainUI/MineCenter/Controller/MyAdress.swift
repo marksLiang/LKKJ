@@ -37,6 +37,9 @@ class MyAdress: CustomTemplateViewController {
     fileprivate let identifier = "MyAdressCell"
     fileprivate let viewModel = MyAdressViewModel()
     
+    /// 订单中地址选择回调
+    var oderAddressSelectedCompletion: ((_ address: AdressModel) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "我的地址"
@@ -67,15 +70,19 @@ class MyAdress: CustomTemplateViewController {
             cell.changeUI()
             currenCell = cell
         }
+    
         cell.selectCallbackValue {[weak self] (buttonTag) in
-            print(indexPath.row)
+            
             switch buttonTag {
             case 1:
                 if self?.currenCell != cell {
                     //反选
-                    self?.currenCell.changeUI()
+                    if  self?.currenCell != nil {
+                        self?.currenCell.changeUI()
+                    }
                     cell.changeUI()
                     self?.currenCell = cell
+                    self?.viewModel.setAddressToDefault(model.accepterid)
                 }
                 break;
             case 2:
@@ -106,6 +113,15 @@ class MyAdress: CustomTemplateViewController {
         }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if oderAddressSelectedCompletion != nil {
+            let model = self.viewModel.model.address![indexPath.row]
+            oderAddressSelectedCompletion!(model)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     //MARK: initUI
     private func inituI()->Void{
         self.view.addSubview(addNewAdress)

@@ -42,3 +42,20 @@ class GoodsinfoModel: NSObject {
         return ["goodsinfo":index_goodsList.self]
     }
 }
+
+/// 订单详情
+class MyOderDetailsModel: NSObject {
+    var orderlist: OderDetailsModel?
+}
+
+class OderDetailsModel: NSObject {
+    var orderid = ""
+    var ispay = ""
+    var orderlistid = ""
+    var addtime = ""
+    var accepterid = ""
+    var name = ""
+    var phone = ""
+    var address = ""
+    var totalprice = ""
+}

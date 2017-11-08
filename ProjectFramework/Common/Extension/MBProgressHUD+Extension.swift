@@ -8,13 +8,13 @@
 
 import UIKit
 
-fileprivate let lk_hud_autoHideTimeInterval = 1.5
+fileprivate let lk_hud_autoHideTimeInterval = 1.0
 
 /**
  must be use MBProgressHUD 0.9.1
  */
 
-// MARK: - Creation HUD
+// MARK: - Create HUD
 extension MBProgressHUD {
     
     /// 获取应用Window
@@ -110,8 +110,8 @@ extension UIViewController {
     ///
     /// - Parameters:
     ///   - status: 提示文本，默认为nil表示不显示提示文本
-    ///   - autoHide: 是否自动隐藏，默认为true表示自动隐藏
-    func lk_showLoadingIndicator(status: String? = nil, autoHide: Bool = true) {
+    ///   - autoHide: 是否自动隐藏，默认为false表示不自动隐藏
+    func lk_showLoadingIndicator(status: String? = nil, autoHide: Bool = false) {
         let hud = MBProgressHUD.lk_hudForView(view: self.view)
         hud.mode = .indeterminate
         if status != nil {

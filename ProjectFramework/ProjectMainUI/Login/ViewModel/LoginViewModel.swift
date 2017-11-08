@@ -95,21 +95,15 @@ class LoginViewModel {
                                                     ,Global_UserInfo.ImagePath as AnyObject
 
                         ], callback: nil )
-
-
-
                     result?(true)
+                    MBProgressHUD.lk_showSuccess(status: resultData?.msg ?? "登录成功")
                 }
                 else{
-                    CommonFunction.HUD(resultData!.msg, type: .error)
                     result?(false)
+                     MBProgressHUD.lk_showError(status: resultData?.msg ?? "请求错误")
                 }
-            }else{
-                    CommonFunction.HUD(resultData!.msg, type: .error)
             }
         }
     }
-    
-    
-    
+
 }

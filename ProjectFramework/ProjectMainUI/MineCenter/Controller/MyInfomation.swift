@@ -175,12 +175,10 @@ extension MyInfomation {
 // MARK: - UIImagePickerControllerDelegate
 extension MyInfomation {
     override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        self.dismiss(animated: true, completion: nil)
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MyHeaderCell
         cell.headerImageView.image = pickedImage
         self.userHeaderImage = UIImage.da_compressImage(toData: pickedImage, withRatio: 1.0)
-        
-        self.dismiss(animated: true, completion: nil)
     }
 }
