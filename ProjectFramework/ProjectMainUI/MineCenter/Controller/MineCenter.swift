@@ -53,8 +53,7 @@ class MineCenter: UIViewController {
             let vc = CommonFunction.ViewControllerWithStoryboardName("MyInfomation", Identifier: "MyInfomation") as! MyInfomation
             self.navigationController?.show(vc, sender: self)
         } else {
-            let vc = LoginViewControllerTwo()
-            self.present(vc, animated: true, completion: nil)
+            self.Login()
         }
         
     }
@@ -83,31 +82,89 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
             switch button.tag {
             //我的订单
             case 100:
-                let vc = CommonFunction.ViewControllerWithStoryboardName("MyOder", Identifier: "MyOder") as! MyOder
-                self?.navigationController?.show(vc, sender: self)
+                if Global_UserInfo.IsLogin == true {
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyOder", Identifier: "MyOder") as! MyOder
+                    self?.navigationController?.show(vc, sender: self)
+                }else{
+                    self?.Login()
+                }
                 break;
             case 101:
-                let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessgae", Identifier: "MyMessgae") as! MyMessgae
-                self?.navigationController?.show(vc, sender: self)
+                if Global_UserInfo.IsLogin == true {
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessgae", Identifier: "MyMessgae") as! MyMessgae
+                    self?.navigationController?.show(vc, sender: self)
+                }else{
+                    self?.Login()
+                }
                 break;
             case 102:
-                let vc = CommonFunction.ViewControllerWithStoryboardName("MyAdress", Identifier: "MyAdress") as! MyAdress
-                self?.navigationController?.show(vc, sender: self)
+                if Global_UserInfo.IsLogin == true {
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyAdress", Identifier: "MyAdress") as! MyAdress
+                    self?.navigationController?.show(vc, sender: self)
+                }else{
+                    self?.Login()
+                }
                 break;
             case 103:
-                let vc = CommonFunction.ViewControllerWithStoryboardName("MyCollect", Identifier: "MyCollect") as! MyCollect
-                self?.navigationController?.show(vc, sender: self)
+                if Global_UserInfo.IsLogin == true {
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyCollect", Identifier: "MyCollect") as! MyCollect
+                    self?.navigationController?.show(vc, sender: self)
+                }else{
+                    self?.Login()
+                }
+                
                 break;
             case 104:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
                 self?.navigationController?.show(vc, sender: self)
                 
                 break;
-            default:
+            case 105:
+                CommonFunction.CallPhone(self!, number: "15907740425")
+                break;
+            case 106:
+                CommonFunction.AlertController(self!, title: "注销账户", message: "确定注销该账户吗？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
+                    //置空数据
+                    Global_UserInfo.ImagePath=""
+                    Global_UserInfo.phone=""
+                    Global_UserInfo.nickname=""
+                    Global_UserInfo.sex="不详"
+                    Global_UserInfo.userid=""
+                    Global_UserInfo.IsLogin=false
+                    Global_UserInfo.token=""
+                    //登陆成功后 存储到数据库
+                    CommonFunction.ExecuteUpdate("update MemberInfo set userid = (?), phone = (?) , token = (?), IsLogin = (?) ,nickname=(?),sex=(?),ImagePath=(?)",
+                                                 [Global_UserInfo.userid as AnyObject
+                                                    ,Global_UserInfo.phone as AnyObject
+                                                    ,Global_UserInfo.token as AnyObject
+                                                    ,Global_UserInfo.IsLogin as AnyObject
+                                                    ,Global_UserInfo.nickname as AnyObject
+                                                    ,Global_UserInfo.sex as AnyObject
+                                                    ,Global_UserInfo.ImagePath as AnyObject
+                                                    
+                        ], callback: nil )
+                    //移除数据
+                    self?.TitleList.removeLast()
+                    self?.ImageList.removeLast()
+                    self?.tableView.reloadData()
+                    //发送退出通知
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "exit"), object: nil, userInfo: nil)
+                }, Cancel_Callback: nil)
+                break;
+            default: 
                 break;
             }
         }
         return cell
+    }
+    func Login() -> Void {
+        let vc = LoginViewControllerTwo()
+        vc.Callback_Value {[weak self] (reuslt) in
+            self?.TitleList.append("安全退出")
+            self?.ImageList.append("Exit")
+            self?.tableView.reloadData()
+        }
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

@@ -21,7 +21,8 @@ class CarModel: NSObject {
     var goodsid = ""
     var count = ""
     var goodsinfo:index_goodsList?
-    
     var isSelected = false
-    
+    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["goodsinfo":index_goodsList.self]
+    }
 }

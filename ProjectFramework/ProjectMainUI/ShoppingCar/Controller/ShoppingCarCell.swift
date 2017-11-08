@@ -119,14 +119,14 @@ class ShoppingCarCell: UITableViewCell {
     }
     //MARK: reloadUI
     func reloadCell(model:CarModel) -> Void {
-        
+        selectBtn.isSelected = model.isSelected //是否选择
         currenNumber = Int(model.count) ?? 0
         goodsCount.text = "数量 x \(currenNumber)"
         currenNumberLable.text = "\(currenNumber)"
         goodsOldPrice.text = "¥\(model.goodsinfo?.old_price ?? "")"
         goodsPrice.text = "¥\(model.goodsinfo?.price ?? "")"
         goodsImageView.ImageLoad(PostUrl: model.goodsinfo?.goodspic ?? "")
-        goodsName.text = model.goodsinfo?.tilte ?? ""
+        goodsName.text = model.goodsinfo?.title ?? ""
         let width = "¥\(model.goodsinfo?.old_price ?? "")".getContenSizeWidth(font: UIFont.systemFont(ofSize: 11))
         line.frame = CGRect.init(x: line.frame.minX, y: line.frame.minY, width: width+3, height: 1)
     }

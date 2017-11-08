@@ -58,7 +58,7 @@ class MyOder: CustomTemplateViewController {
         
         cell.mainImageView.ImageLoad(PostUrl: goods?.goodsinfo?.goodspic ?? "")
         cell.Datetime.text = model.addtime
-        cell.goodsName.text = goods?.goodsinfo?.tilte ?? ""
+        cell.goodsName.text = goods?.goodsinfo?.title ?? ""
         cell.goodsCount.text = goods?.count ?? "1"
         cell.goodsPrice.text = goods?.goodsinfo?.price ?? ""
         return cell

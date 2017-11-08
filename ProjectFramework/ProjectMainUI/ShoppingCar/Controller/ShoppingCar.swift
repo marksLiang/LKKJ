@@ -53,10 +53,21 @@ class ShoppingCar: CustomTemplateViewController {
         // Do any additional setup after loading the view.
         self.initUI()
         self.getData()
+        NotificationCenter.default.addObserver(self, selector: #selector(ShoppingCar.exitNoti), name: Notification.Name(rawValue: "exit"), object: nil)
     }
-    
+    //MARK: 收到退出通知
+    func exitNoti() -> Void {
+        debugPrint("我收到退出通知了")
+        self.selectArray.removeAll()
+        self.dataArray.removeAll()
+        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        if Global_UserInfo.IsLogin == false {
+//            let vc = LoginViewControllerTwo()
+//            self.present(vc, animated: true, completion: nil)
+//        }
         if CommonFunction.Instance.isNeedRefreshShoppingCar {
             self.getData()
             CommonFunction.Instance.isNeedRefreshShoppingCar = false
@@ -72,14 +83,18 @@ class ShoppingCar: CustomTemplateViewController {
     }
     
     func getData() -> Void {
-        viewModel.getGoodsCarList { (result) in
+        viewModel.getGoodsCarList { (result,istokenValid) in
             if result {
+                if istokenValid == false {
+                    Global_UserInfo.IsLogin = false
+                    let vc = LoginViewControllerTwo()
+                    self.present(vc, animated: true, completion: nil)
+                }
                 self.dataArray.removeAll()
                 for model in self.viewModel.model.goods_car! {
                     self.dataArray.append(model)
                 }
                 self.numberOfSections = 1
-                self.numberOfRowsInSection = self.viewModel.model.goods_car?.count ?? 0
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: false)
             } else {
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
@@ -125,13 +140,21 @@ class ShoppingCar: CustomTemplateViewController {
             //编辑删除时
             if isCellEditing == true{
                 CommonFunction.AlertController(self, title: "是否删除", message: "确定将该商品从购物车删除？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
+                    var goodsId = ""
                     for i in 0..<self.selectArray.count{
                         let model = self.selectArray[i]
+                        if i == 0 {
+                            goodsId = model.goodsid
+                        }else{
+                            goodsId = "\(goodsId),\(model.goodsid)"
+                        }
                         self.dataArray.remove(at: (self.dataArray.index(of: model))!)
                     }
+                    debugPrint(goodsId)
                     self.selectArray.removeAll()
                     self.totalPrice()
                     self.verityAllSelectState()
+                    self.viewModel.deleteCar(goodsid: goodsId)
                     self.RefreshRequest(isLoading: false, isHiddenFooter: true)
                 }) {
                     
@@ -179,14 +202,20 @@ class ShoppingCar: CustomTemplateViewController {
         }
     }
     //MARK: tableViewDelegate
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.dataArray.count
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ShoppingCarCell
-        let model = self.viewModel.model.goods_car![indexPath.row]
+        let model = self.dataArray[indexPath.row]
         cell.isCellEding = isCellEditing
         //cell操作
         cell.FuncCallbackValue {[weak self] (buttonTag,number) in
-            self?.selectArray.append(model)
+            model.count = String(number)
             self?.totalPrice()
+            self?.viewModel.setCarUpdate(Int(Global_UserInfo.userid)!, Global_UserInfo.token, goodsid: Int(model.goodsid)!, count: Int(model.count)!, { (result) in
+                
+            })
         }
         cell.selectCallbackValue {[weak self] (isSelected) in
             model.isSelected = isSelected
@@ -209,9 +238,7 @@ class ShoppingCar: CustomTemplateViewController {
         self.InitCongif(tableView)
         self.header.isHidden = true
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight - 49 - 40)
-        self.numberOfSections = 1
         self.tableViewheightForRowAt = 100
-        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
         //设置导航栏
         let rightItem = UIBarButtonItem.init(customView: edtingBtn)
         self.navigationItem.rightBarButtonItem = rightItem
@@ -238,6 +265,8 @@ extension ShoppingCar {
             tableView.deleteRows(at: [IndexPath(row:indexPath.row, section: 0)], with: .left)
             self.totalPrice()
             self.verityAllSelectState()
+            self.viewModel.deleteCar(goodsid: model.goodsid)
+            self.RefreshRequest(isLoading: false, isHiddenFooter: true)
         }) {
             
         }

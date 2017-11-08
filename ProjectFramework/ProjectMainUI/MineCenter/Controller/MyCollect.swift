@@ -37,7 +37,7 @@ class MyCollect: CustomTemplateViewController {
         let model = viewModel.model.goods_like![indexPath.row]
         
         cell.mainImage.ImageLoad(PostUrl: (model.goodsinfo?.goodspic)!)
-        cell.goodsTitle.text = model.goodsinfo?.tilte
+        cell.goodsTitle.text = model.goodsinfo?.title
         cell.goodsPrice.text = model.goodsinfo?.price
         return cell
     }

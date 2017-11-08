@@ -12,7 +12,7 @@ class HomeViewModel {
     var model = HomeModel()
     
     func GetHomeModel(result:((_ result:Bool?) -> Void)?) {
-        CommonFunction.Global_Post(entity: HomeModel(), IsListData: false, url: HttpsUrl+"index.php/", isHUD: false, isHUDMake: false, parameters: nil) { (resultModel) in
+        CommonFunction.Global_Post(entity: HomeModel(), IsListData: false, url: HttpsUrl+"index.php/Index/index", isHUD: false, isHUDMake: false, parameters: nil) { (resultModel) in
             if resultModel?.status == 200 {
                 if resultModel?.data == nil {
                     return

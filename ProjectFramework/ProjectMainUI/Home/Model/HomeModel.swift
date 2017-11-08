@@ -38,7 +38,7 @@ class index_typeList: NSObject {
 //商品
 class index_goodsList: NSObject {
     var goodsid = ""
-    var tilte = ""
+    var title = ""
     var goodspic = ""
     var infopic = ""
     var content = ""

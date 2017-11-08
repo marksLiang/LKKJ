@@ -1718,7 +1718,7 @@
 				TargetAttributes = {
 					27609BCB1CB257810041E8B7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = WQC9K9M749;
+						DevelopmentTeam = QWR8296739;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2242,7 +2242,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WQC9K9M749;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QWR8296739;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2272,7 +2273,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LKKJ123.lkkj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LKKJ12345.lkkj;
 				PRODUCT_NAME = LKKJ;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2291,7 +2292,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WQC9K9M749;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QWR8296739;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2322,7 +2324,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LKKJ123.lkkj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LKKJ12345.lkkj;
 				PRODUCT_NAME = LKKJ;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

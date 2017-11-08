@@ -14,7 +14,7 @@ class LoginMode: NSObject
     var nickname=""
     var username=""
     var token=""
-
+    var userpic=""
 }
 class LoginBaseModel: NSObject {
     

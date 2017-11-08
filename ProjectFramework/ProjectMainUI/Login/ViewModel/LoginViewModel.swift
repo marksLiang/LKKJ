@@ -76,7 +76,7 @@ class LoginViewModel {
                 if resultData?.data != nil {
                     let dic = resultData?.data as! Dictionary<String , Any>
                     let model = LoginMode.mj_object(withKeyValues: dic["login"])
-                    Global_UserInfo.ImagePath=""
+                    Global_UserInfo.ImagePath=model!.userpic
                     Global_UserInfo.phone=self.username.value
                     Global_UserInfo.nickname=model!.nickname
                     Global_UserInfo.sex="不详"
