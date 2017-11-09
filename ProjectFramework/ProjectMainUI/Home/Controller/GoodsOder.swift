@@ -14,7 +14,7 @@ class GoodsOder: UITableViewController {
     var goodsNumber = 1
     fileprivate let viewModel = MyAdressViewModel()
     fileprivate let oderViewModel = MyOderViewModel()
-    fileprivate var defaultAddress: AdressModel?
+    fileprivate var defaultAddress: AdressModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +54,15 @@ extension GoodsOder {
                         break
                     }
                 }
-                if self.defaultAddress == nil {
+                if self.defaultAddress == nil && (self.viewModel.model.address?.count ?? 0) > 0 {
                     self.defaultAddress = self.viewModel.model.address?.first
                 }
-                
-                self.setAddress(address: self.defaultAddress!)
+                guard let defaultAddress = self.defaultAddress else {
+                    let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! GoodsOderAdressCell
+                    cell.nameLabel.text = "点击添加收货地址"
+                    return
+                }
+                self.setAddress(address: defaultAddress)
             }
         }
     }
@@ -93,7 +97,7 @@ extension GoodsOder {
             cell.goodsImageView.ImageLoad(PostUrl: model.goodspic)
             cell.priceLabel.text = "价格：¥\(model.price)"
             let discounts = Int(model.old_price)! - Int(model.price)!
-            cell.discountsLabel.text = "已优惠：¥\(discounts)"
+            cell.discountsLabel.text = "已优惠：¥\(discounts * goodsNumber)"
             cell.numberLabel.text = "数量：\(goodsNumber)"
             cell.submitButton.layer.cornerRadius = 2.0
             cell.submitButton.layer.borderWidth = 0.5

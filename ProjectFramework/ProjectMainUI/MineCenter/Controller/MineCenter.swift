@@ -23,26 +23,34 @@ class MineCenter: UIViewController {
     
     fileprivate let identifier="MyCell"
     fileprivate let _MyHeadUIView=MyHeadUIView()
-    fileprivate var ImageList = ["Order","information","myaddress","myCollction","mysetting","contact","Exit"]
+    fileprivate var ImageList = ["Order","information","myaddress","myCollction","mysetting","contact"]
     fileprivate var TitleList = ["我的订单","我的消息","我的地址","我的收藏","系统设置","联系客服"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "个人中心"
+        
         if Global_UserInfo.IsLogin {
+            ImageList.append("Exit")
             TitleList.append("安全退出")
         }
+        
         self.initUI()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         if(Global_UserInfo.IsLogin==true){
-            self._MyHeadUIView.Imgbtn?.ImageLoad(PostUrl: HttpsUrlImage+Global_UserInfo.ImagePath)
             self._MyHeadUIView.LabName.text = Global_UserInfo.nickname
+            self._MyHeadUIView.Imgbtn?.ImageLoad(PostUrl: Global_UserInfo.ImagePath)
         }else{
             self._MyHeadUIView.Imgbtn?.image = UIImage.init(named: "userIcon_defualt")
             self._MyHeadUIView.LabName.text = "登录"
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private func initUI()->Void{
         self.view.backgroundColor = CommonFunction.RGBA(239, g: 191, b: 133, a: 1)
         self.tableView.backgroundColor = UIColor.clear
@@ -54,6 +62,9 @@ class MineCenter: UIViewController {
     func UserInfoEdit(){
         if Global_UserInfo.IsLogin {
             let vc = CommonFunction.ViewControllerWithStoryboardName("MyInfomation", Identifier: "MyInfomation") as! MyInfomation
+            vc.changeMineCenterHeader = {
+                self._MyHeadUIView.Imgbtn?.ImageLoad(PostUrl: Global_UserInfo.ImagePath)
+            }
             self.navigationController?.show(vc, sender: self)
         } else {
             self.Login()
@@ -150,6 +161,7 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
                     self?.TitleList.removeLast()
                     self?.ImageList.removeLast()
                     self?.tableView.reloadData()
+                    self?._MyHeadUIView.Imgbtn?.image = UIImage.init(named: "userIcon_defualt")
                     self?._MyHeadUIView.LabName.text = "登录"
                     // 需要刷新购物车
                     CommonFunction.Instance.isNeedRefreshShoppingCar = true
@@ -169,6 +181,8 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
             self?.TitleList.append("安全退出")
             self?.ImageList.append("Exit")
             self?.tableView.reloadData()
+            self?._MyHeadUIView.LabName.text = Global_UserInfo.nickname
+            self?._MyHeadUIView.Imgbtn?.ImageLoad(PostUrl: Global_UserInfo.ImagePath)
         }
         self.present(vc, animated: true, completion: nil)
     }

@@ -66,7 +66,7 @@ class MyAddressEdit: UITableViewController {
             }
         } else {
             // 修改地址
-            MyAdressViewModel.changeAddress((address?.accepterid)!, (address?.name)!, (address?.phone)!, (address?.address)!, isOn) { (result) in
+            MyAdressViewModel.changeAddress((address?.accepterid)!, kname, kphone, karea + kdetailAddress, isOn) { (result) in
                 if result {
                     self.navigationController?.popViewController(animated: true)
                     if self.needRefreshAddressList != nil {

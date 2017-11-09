@@ -107,7 +107,9 @@ class LoginViewControllerTwo: UIViewController
                             self?.myCallbackValue?(true)
                             self?.dismiss(animated: true, completion: {
                           })
-                    } 
+                    } else {
+                        
+                    }
                 })
                 break
             case   .empty:

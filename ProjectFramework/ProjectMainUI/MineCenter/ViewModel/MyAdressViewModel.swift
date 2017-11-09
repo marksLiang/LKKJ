@@ -40,11 +40,14 @@ class MyAdressViewModel: NSObject {
     
     /// 修改收货地址
     class func changeAddress(_ accepterid: String, _ name: String, _ phone: String, _ address: String, _ state: String = "0", result: @escaping (_ result: Bool)->()) {
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/update_save", isHUD: false, isHUDMake: false, parameters: ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "name": name, "accepterid": accepterid, "phone": phone, "address": address]) { (resultModel) in
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/update_save", isHUD: false, isHUDMake: false, parameters: ["userid": Int(Global_UserInfo.userid)!, "token": Global_UserInfo.token, "name": name, "accepterid": accepterid, "phone": phone, "address": address] as NSDictionary) { (resultModel) in
+            
             if resultModel?.status == 200 {
                 MBProgressHUD.lk_showSuccess(status: resultModel?.msg ?? "修改成功")
+                result(true)
             } else {
                 MBProgressHUD.lk_showError(status: resultModel?.msg ?? "修改失败")
+                result(false)
             }
         }
     }

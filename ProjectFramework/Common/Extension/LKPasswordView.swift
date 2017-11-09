@@ -124,7 +124,7 @@ extension LKPasswordView: UITextFieldDelegate {
             /// 判断是不是删除键
             return true
         } else if textFieldText.length >= passwordCount {
-            /// 输入的字符个数大于6，则无法继续输入，返回NO表示禁止输入
+            /// 输入的字符个数大于6，则无法继续输入，返回false表示禁止输入
             return false
         } else {
             return true

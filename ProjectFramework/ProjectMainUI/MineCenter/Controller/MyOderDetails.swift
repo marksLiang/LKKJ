@@ -26,7 +26,7 @@ class MyOderDetails: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "订单详情"
         setupSubViews()
         serializeData()
     }
@@ -48,7 +48,7 @@ extension MyOderDetails {
         self.rows = [3, 4, 1]
         self.sectionTitles = ["", "收件人信息", "商品信息"]
         self.oderTitles = ["订单号：", "下单账号：","订单状态："]
-        self.oderContents = [oder.orderlistid, oder.phone, oder.ispay == "0" ? "未付款" : "已付款"]
+        self.oderContents = [oder.orderlistid, oder.phone, oder.ispay == "0" ? "待付款" : "已付款"]
         self.receiverInfos = ["姓名" : oder.name, "电话" : oder.phone, "地址" : oder.address, "买家备注" : "无"]
     }
     

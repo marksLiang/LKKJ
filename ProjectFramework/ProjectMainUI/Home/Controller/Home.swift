@@ -130,7 +130,13 @@ class Home: CustomTemplateViewController {
     }
     //MARK: 消息
     func righButtonItem (){
-        debugPrint("点击消息")
+        if Global_UserInfo.IsLogin {
+            let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessgae", Identifier: "MyMessgae") as! MyMessgae
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = LoginViewControllerTwo()
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     //MARK: 返回组头
     private func setSection(text:String )->UIView{

@@ -71,7 +71,7 @@ class LoginViewModel {
     
     func SetLogin( result:((_ result:Bool?) -> Void)?){
         let parameters=["username":username.value,"password":password.value]
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"index.php/Login/save", isHUD: true, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"index.php/Login/save", isHUD: false, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
             if(resultData?.status==200){
                 if resultData?.data != nil {
                     let dic = resultData?.data as! Dictionary<String , Any>

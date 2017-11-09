@@ -10,6 +10,7 @@ import UIKit
 
 class GoodsDetailInfoCell: UITableViewCell {
 
+    @IBOutlet weak var addSubButton: ASButton!
     @IBOutlet weak var titlLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
     @IBOutlet weak var soldOutLabel: UILabel!

@@ -14,10 +14,11 @@ class GoodsDetails: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var model: index_goodsList?
     var contentImageViewHeight = 0.0
-    
+
     fileprivate let disposeBag = DisposeBag() //创建一个处理包（通道）
     fileprivate let colorArray = [CommonFunction.SystemColor(),UIColor().TransferStringToColor("#F09826")] //颜色
     fileprivate let textArray  = ["立即购买","加入购物车"]
+    fileprivate var goodsInfoCell: GoodsDetailInfoCell?
     
     //轮播图
     fileprivate lazy var scrollView: SDCycleScrollView = {
@@ -104,15 +105,23 @@ extension GoodsDetails {
             button.setTitle(textArray[i], for: .normal)
             button.setTitleColor(UIColor.white, for: .normal)
             button.rx.tap.subscribe( {[weak self] (value) in
+                
+                if !Global_UserInfo.IsLogin {
+                    let vc = LoginViewControllerTwo()
+                    self?.present(vc, animated: true, completion: nil)
+                    return
+                }
+                
                 let buttonTitle = button.titleLabel!.text
+                let goodsNumber = self?.goodsInfoCell?.addSubButton.textValue() ?? "1"
+                
                 if buttonTitle == "立即购买" {
                     let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsOder", Identifier: "GoodsOder") as! GoodsOder
                     vc.model = self?.model
+                    vc.goodsNumber = Int(goodsNumber) ?? 1
                     self?.navigationController?.show(vc, sender: self)
-                } else if buttonTitle == "加入购物车" {
-                    GoodsDetailViewModel.addGoodsCar(goodsid: (self?.model?.goodsid)!, count: 1)
-                } else {
-                    
+                } else  {
+                    GoodsDetailViewModel.addGoodsCar(goodsid: (self?.model?.goodsid)!, count: Int(goodsNumber) ?? 1)
                 }
                 
             }).addDisposableTo(self.disposeBag)
@@ -158,6 +167,7 @@ extension GoodsDetails: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsDetailInfoCell", for: indexPath) as! GoodsDetailInfoCell
+            self.goodsInfoCell = cell
             cell.selectionStyle = .none
             cell.titlLabel.text = self.model?.content
             cell.originalPriceLabel.text = "原价：¥" + (self.model?.old_price)!

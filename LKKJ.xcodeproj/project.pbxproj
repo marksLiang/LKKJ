@@ -49,6 +49,8 @@
 		04AF9E441FAC620C007C72C2 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04AF9E431FAC620C007C72C2 /* city.plist */; };
 		04BA84A71FAC6896002630F4 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */; };
 		04BA84A91FAC6C50002630F4 /* HUD.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BA84A81FAC6C50002630F4 /* HUD.xcassets */; };
+		04DF4D1A1FB3F03D0028554D /* ASButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF4D191FB3F03D0028554D /* ASButton.swift */; };
+		04DF4D251FB405B60028554D /* UIButton+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF4D241FB405B60028554D /* UIButton+Creation.swift */; };
 		04F616261FB1DE8700F352F7 /* NSObject+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F616251FB1DE8700F352F7 /* NSObject+Cache.swift */; };
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
@@ -311,6 +313,8 @@
 		04AF9E431FAC620C007C72C2 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
 		04BA84A81FAC6C50002630F4 /* HUD.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HUD.xcassets; sourceTree = "<group>"; };
+		04DF4D191FB3F03D0028554D /* ASButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASButton.swift; sourceTree = "<group>"; };
+		04DF4D241FB405B60028554D /* UIButton+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Creation.swift"; sourceTree = "<group>"; };
 		04F616251FB1DE8700F352F7 /* NSObject+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Cache.swift"; sourceTree = "<group>"; };
 		079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -782,6 +786,7 @@
 		04AF9E3D1FAC5FC4007C72C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04DF4D181FB3F0150028554D /* ASButton */,
 				04BA84A51FAC6885002630F4 /* Extension */,
 				04AF9E451FAC6248007C72C2 /* CityChooseView */,
 			);
@@ -804,8 +809,18 @@
 				04BA84A81FAC6C50002630F4 /* HUD.xcassets */,
 				04BA84A61FAC6896002630F4 /* MBProgressHUD+Extension.swift */,
 				04F616251FB1DE8700F352F7 /* NSObject+Cache.swift */,
+				04DF4D241FB405B60028554D /* UIButton+Creation.swift */,
+				5F0BF30F1FA8086100089F74 /* LKPasswordView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		04DF4D181FB3F0150028554D /* ASButton */ = {
+			isa = PBXGroup;
+			children = (
+				04DF4D191FB3F03D0028554D /* ASButton.swift */,
+			);
+			path = ASButton;
 			sourceTree = "<group>";
 		};
 		27609BC31CB257810041E8B7 = {
@@ -1339,7 +1354,6 @@
 				5F0BF3061FA8085F00089F74 /* ChangeLoginPw.storyboard */,
 				5F0BF30E1FA8086100089F74 /* ChangeLoginPwCell.swift */,
 				5F0BF3071FA8085F00089F74 /* ChangePayPassword.storyboard */,
-				5F0BF30F1FA8086100089F74 /* LKPasswordView.swift */,
 				5F0BF30D1FA8086100089F74 /* MyInfomation.storyboard */,
 				5F0BF3081FA8085F00089F74 /* MyInfomationCell.swift */,
 				5F0BF3091FA8086000089F74 /* MySetting.storyboard */,
@@ -1721,7 +1735,7 @@
 				TargetAttributes = {
 					27609BCB1CB257810041E8B7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = QWR8296739;
+						DevelopmentTeam = WQC9K9M749;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2057,6 +2071,7 @@
 				6F4904C71F186DBA00F74691 /* UIToolbar+Extension.swift in Sources */,
 				04AF9E311FAC43D0007C72C2 /* MyAddressEdit.swift in Sources */,
 				5F70DDCA1F95A46B0083EA94 /* MyDefaultCell.swift in Sources */,
+				04DF4D251FB405B60028554D /* UIButton+Creation.swift in Sources */,
 				6F4904D51F186E9800F74691 /* AppResultModel.swift in Sources */,
 				6F4904B61F186DBA00F74691 /* CGFloat+Extension.swift in Sources */,
 				2E12CA201E6F1D88009527BA /* CommonFunction.swift in Sources */,
@@ -2109,6 +2124,7 @@
 				6FF51D2D1EBD7E9E00021790 /* MenuView.swift in Sources */,
 				2E12CB0C1E6F1E6F009527BA /* PYSearchViewController.m in Sources */,
 				6F4904CD1F186E5A00F74691 /* AFNHelper.swift in Sources */,
+				04DF4D1A1FB3F03D0028554D /* ASButton.swift in Sources */,
 				5F29FEA81F7A5E9E004B41FE /* regiestViewModel.swift in Sources */,
 				5F29FEAA1F7A5EA4004B41FE /* ForgotPasswordController.swift in Sources */,
 				0476BFAB1FB1581400905C3C /* NSString+Verification.m in Sources */,
@@ -2247,7 +2263,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QWR8296739;
+				DEVELOPMENT_TEAM = WQC9K9M749;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2297,7 +2313,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QWR8296739;
+				DEVELOPMENT_TEAM = WQC9K9M749;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

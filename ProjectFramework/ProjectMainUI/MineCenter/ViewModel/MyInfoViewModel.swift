@@ -34,30 +34,19 @@ class MyInfoViewModel: NSObject {
     ///   - phone: 手机号
     ///   - sex: 性别
     ///   - userpic: 头像
-    class func changeUserInfomation(_ nickname: String, _ phone: String, _ sex: String, _ userpic: Data) {
+    class func changeUserInfomation(_ nickname: String, _ phone: String, _ sex: String, _ userpic: Data, reslut: @escaping (Bool) -> ()) {
         let params = ["userid": Global_UserInfo.userid, "token": Global_UserInfo.token, "nickname": nickname, "phone": phone, "sex": sex]
-//        print(userpic)
-//        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl + "index.php/Personal/save", isHUD: false, isHUDMake: false, parameters: params as NSDictionary) { (result) in
-//
-//            if result?.status == 200 {
-//                CommonFunction.HUD(result?.msg ?? "修改成功", type: .success)
-//                debugPrint(result?.msg ?? "修改成功")
-//            } else {
-//                debugPrint(result?.msg ?? "请求错误")
-//            }
-//        }
         
         AFNHelper.upload(HttpsUrl + "index.php/Personal/save", parameters: params as NSDictionary, constructingBodyWithBlock: { (formatData) in
-//            formatData.appendPart(withForm: userpic, name: "mypic")
-            formatData.appendPart(withFileData: userpic, name: "mypic", fileName: "image.jpg", mimeType: "image/jpeg")
+            
+            formatData.appendPart(withFileData: userpic, name: "userpic", fileName: "image.jpg", mimeType: "image/jpeg")
         }, uploadProgress: { (progress) in
-            print(progress)
         }, success: { (success) in
-            print(success)
             MBProgressHUD.lk_showSuccess(status: "修改成功")
+            reslut(true)
         }) { (failure) in
-            print(failure)
             MBProgressHUD.lk_showError(status: "修改失败")
+            reslut(false)
         }
     }
     

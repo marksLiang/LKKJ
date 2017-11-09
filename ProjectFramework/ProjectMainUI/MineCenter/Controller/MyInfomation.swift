@@ -16,6 +16,7 @@ class MyInfomation: UITableViewController {
     fileprivate let titles = ["头像管理", "昵称", "手机号", "修改登录密码", "修改支付密码", "性别"]
     fileprivate var userInfo: UserModel?
     fileprivate var userHeaderImage: Data?
+    var changeMineCenterHeader: (() ->Void)?
     
     deinit {
         debugPrint(self.description)
@@ -42,7 +43,11 @@ class MyInfomation: UITableViewController {
         }
        
         if self.userHeaderImage != nil {
-            MyInfoViewModel.changeUserInfomation(user.nickname, user.phone, user.sex, self.userHeaderImage!)
+            MyInfoViewModel.changeUserInfomation(user.nickname, user.phone, user.sex, self.userHeaderImage!) { (result) in
+                if result && self.changeMineCenterHeader != nil {
+                    self.changeMineCenterHeader!()
+                }
+            }
         }
         
     }
