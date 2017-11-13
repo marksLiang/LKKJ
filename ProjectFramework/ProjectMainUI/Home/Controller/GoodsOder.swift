@@ -18,7 +18,7 @@ class GoodsOder: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "确认订单"
         self.tableView.tableFooterView = UIView()
         getDefaultAddress()
     }

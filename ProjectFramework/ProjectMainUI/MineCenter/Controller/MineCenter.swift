@@ -163,10 +163,8 @@ extension MineCenter:UITableViewDelegate,UITableViewDataSource{
                     self?.tableView.reloadData()
                     self?._MyHeadUIView.Imgbtn?.image = UIImage.init(named: "userIcon_defualt")
                     self?._MyHeadUIView.LabName.text = "登录"
-                    // 需要刷新购物车
-                    CommonFunction.Instance.isNeedRefreshShoppingCar = true
                     //发送退出通知
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "exit"), object: nil, userInfo: nil)
+                    LKNotification.post(name: LKUserDidLogoutNotification)
                 }, Cancel_Callback: nil)
                 break;
             default: 

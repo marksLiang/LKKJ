@@ -17,6 +17,15 @@ class ChangeLoginPw: MyInfomationBase {
         super.viewDidLoad()
         
         tableView.separatorStyle = .singleLine
+        
+        if (self.navigationController?.viewControllers.count ?? 0) == 1  {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(leftBarButtonItemEvent))
+        }
+    }
+    
+    @objc private func leftBarButtonItemEvent() {
+        self.view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func rightBarButtonItemEvent() {
@@ -29,7 +38,13 @@ class ChangeLoginPw: MyInfomationBase {
         if texts.count == titles.count {
             MyInfoViewModel.changeLoginPassword(texts.first ?? "", texts[1], texts.last ?? "") { (success) in
                 if success {
-                    self.navigationController?.popViewController(animated: true)
+                    if (self.navigationController?.viewControllers.count ?? 0) == 1  {
+                        self.view.endEditing(true)
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
                 }
             }
         }

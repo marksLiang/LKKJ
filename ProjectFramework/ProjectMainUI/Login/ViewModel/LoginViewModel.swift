@@ -98,10 +98,9 @@ class LoginViewModel {
                     result?(true)
                     MBProgressHUD.lk_showSuccess(status: resultData?.msg ?? "登录成功")
                 }
-                else{
-                    result?(false)
-                     MBProgressHUD.lk_showError(status: resultData?.msg ?? "请求错误")
-                }
+            } else {
+                result?(false)
+                MBProgressHUD.lk_showError(status: resultData?.msg ?? "请求错误")
             }
         }
     }

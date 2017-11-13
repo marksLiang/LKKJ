@@ -9,7 +9,7 @@
 import UIKit
 
 class ASButton: UIView {
-    
+    /// 边框颜色
     var borderColor: UIColor = .gray {
         didSet {
             self.layer.borderColor = borderColor.cgColor
@@ -17,6 +17,7 @@ class ASButton: UIView {
             line2.backgroundColor = borderColor
         }
     }
+    /// 边框宽度
     fileprivate let kBorderWidth: CGFloat = 0.5
     
     fileprivate lazy var addButton = UIButton.as_textButton(title: "+", fontSize: 13.0, normalColor: .gray, heightlightedColor: .darkGray)

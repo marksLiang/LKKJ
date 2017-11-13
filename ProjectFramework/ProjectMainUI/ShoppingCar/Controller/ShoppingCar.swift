@@ -52,26 +52,27 @@ class ShoppingCar: CustomTemplateViewController {
         self.title = "购物车"
         // Do any additional setup after loading the view.
         self.initUI()
-        self.getData()
-        NotificationCenter.default.addObserver(self, selector: #selector(ShoppingCar.exitNoti), name: Notification.Name(rawValue: "exit"), object: nil)
-    }
-    //MARK: 收到退出通知
-    func exitNoti() -> Void {
-        debugPrint("我收到退出通知了")
-        self.selectArray.removeAll()
-        self.dataArray.removeAll()
-        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+        if Global_UserInfo.IsLogin == true {
+            self.getData()
+        } else {
+            MBProgressHUD.lk_showMessage(status: "请先去登录")
+            self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
+        }
+        LKNotification.addObserver(self, selector: #selector(userDidLogout), name: LKUserDidLogoutNotification)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        if Global_UserInfo.IsLogin == false {
-//            let vc = LoginViewControllerTwo()
-//            self.present(vc, animated: true, completion: nil)
-//        }
         if CommonFunction.Instance.isNeedRefreshShoppingCar {
             self.getData()
             CommonFunction.Instance.isNeedRefreshShoppingCar = false
         }
+    }
+    
+    // MAKR: - Notification
+    @objc private func userDidLogout() {
+        self.selectArray.removeAll()
+        self.dataArray.removeAll()
+        self.RefreshRequest(isLoading: false, isHiddenFooter: true)
     }
     
     //MARK: 刷新
@@ -91,9 +92,12 @@ class ShoppingCar: CustomTemplateViewController {
                     self.present(vc, animated: true, completion: nil)
                 }
                 self.dataArray.removeAll()
-                for model in self.viewModel.model.goods_car! {
-                    self.dataArray.append(model)
+                if (self.viewModel.model.goods_car?.count ?? 0) > 0 {
+                    for model in self.viewModel.model.goods_car! {
+                        self.dataArray.append(model)
+                    }
                 }
+                
                 self.numberOfSections = 1
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: false)
             } else {
@@ -159,7 +163,11 @@ class ShoppingCar: CustomTemplateViewController {
                 }) {
                     
                 }
-            }else{//结算
+            } else {//结算
+                let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsOder", Identifier: "GoodsOder") as! GoodsOder
+//                vc.model = self?.model
+//                vc.goodsNumber = Int(goodsNumber) ?? 1
+//                self?.navigationController?.show(vc, sender: self)
                 
             }
             break
@@ -270,5 +278,12 @@ extension ShoppingCar {
         }) {
             
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.dataArray[indexPath.row]
+        let vc = CommonFunction.ViewControllerWithStoryboardName("GoodsDetails", Identifier: "GoodsDetails") as! GoodsDetails
+        vc.model = model.goodsinfo
+        self.navigationController?.show(vc, sender: self)
     }
 }

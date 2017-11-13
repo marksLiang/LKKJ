@@ -74,8 +74,13 @@ class LoginViewControllerTwo: UIViewController
  
         _LoginView?.Forgetpassword.rx.tap.subscribe(      //忘记密码事件
             onNext:{ [weak self] value in
-                let vc = ForgotPasswordController()
-                self?.present(vc, animated: true, completion: nil)
+//                let vc = ForgotPasswordController()
+//                self?.present(vc, animated: true, completion: nil)
+                let vc = CommonFunction.ViewControllerWithStoryboardName("ChangeLoginPw", Identifier: "ChangeLoginPw") as! ChangeLoginPw
+                let nav = CYLBaseNavigationController.init(rootViewController: vc)
+                self?.present(nav, animated: true, completion: nil)
+//                nav.navigationController?.pushViewController(vc, animated: true)
+//                self?.navigationController?.pushViewController(vc, animated: true)
         }).addDisposableTo(disposeBag)
         
         

@@ -36,7 +36,9 @@ class MyOderDetails: UITableViewController {
 extension MyOderDetails {
     
     fileprivate func setupSubViews() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "处理", style: .plain, target: self, action: #selector(rightBarButtonItemEvent))
+        let buttonTitle = self.oderModel?.ispay == "0" ? "去付款" : "退货"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: self, action: #selector(rightBarButtonItemEvent))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: normalCellIdentifier)
     }
     

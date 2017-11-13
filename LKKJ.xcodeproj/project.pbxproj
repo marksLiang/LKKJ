@@ -51,6 +51,7 @@
 		04BA84A91FAC6C50002630F4 /* HUD.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BA84A81FAC6C50002630F4 /* HUD.xcassets */; };
 		04DF4D1A1FB3F03D0028554D /* ASButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF4D191FB3F03D0028554D /* ASButton.swift */; };
 		04DF4D251FB405B60028554D /* UIButton+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF4D241FB405B60028554D /* UIButton+Creation.swift */; };
+		04F403921FB9378E00EBDE8F /* LKNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F403911FB9378E00EBDE8F /* LKNotification.swift */; };
 		04F616261FB1DE8700F352F7 /* NSObject+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F616251FB1DE8700F352F7 /* NSObject+Cache.swift */; };
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
@@ -315,6 +316,7 @@
 		04BA84A81FAC6C50002630F4 /* HUD.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HUD.xcassets; sourceTree = "<group>"; };
 		04DF4D191FB3F03D0028554D /* ASButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASButton.swift; sourceTree = "<group>"; };
 		04DF4D241FB405B60028554D /* UIButton+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Creation.swift"; sourceTree = "<group>"; };
+		04F403911FB9378E00EBDE8F /* LKNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKNotification.swift; sourceTree = "<group>"; };
 		04F616251FB1DE8700F352F7 /* NSObject+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Cache.swift"; sourceTree = "<group>"; };
 		079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -786,6 +788,7 @@
 		04AF9E3D1FAC5FC4007C72C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04F403901FB9378E00EBDE8F /* LKNotification */,
 				04DF4D181FB3F0150028554D /* ASButton */,
 				04BA84A51FAC6885002630F4 /* Extension */,
 				04AF9E451FAC6248007C72C2 /* CityChooseView */,
@@ -821,6 +824,14 @@
 				04DF4D191FB3F03D0028554D /* ASButton.swift */,
 			);
 			path = ASButton;
+			sourceTree = "<group>";
+		};
+		04F403901FB9378E00EBDE8F /* LKNotification */ = {
+			isa = PBXGroup;
+			children = (
+				04F403911FB9378E00EBDE8F /* LKNotification.swift */,
+			);
+			path = LKNotification;
 			sourceTree = "<group>";
 		};
 		27609BC31CB257810041E8B7 = {
@@ -2061,6 +2072,7 @@
 				5FCB6B6E1F6FC98400F2857E /* TAAnimatedDotView.m in Sources */,
 				046343A51FB197B300369A87 /* GoodsDetailInfoCell.swift in Sources */,
 				04F616261FB1DE8700F352F7 /* NSObject+Cache.swift in Sources */,
+				04F403921FB9378E00EBDE8F /* LKNotification.swift in Sources */,
 				5FCB6B781F6FD5A300F2857E /* HomeMenuCell.swift in Sources */,
 				6F4904C61F186DBA00F74691 /* UITextField+Extension.swift in Sources */,
 				046343A71FB1B35000369A87 /* GoodsOder.swift in Sources */,

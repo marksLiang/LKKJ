@@ -8,13 +8,9 @@
 
 import UIKit
 
-fileprivate let lk_hud_autoHideTimeInterval = 1.0
+fileprivate let lk_hud_autoHideTimeInterval = 1.5
 
-/**
- must be use MBProgressHUD 0.9.1
- */
-
-// MARK: - Create HUD
+// MARK: - Creation HUD
 extension MBProgressHUD {
     
     /// 获取应用Window
@@ -40,24 +36,45 @@ extension MBProgressHUD {
     /// - Returns: MBProgressHUD实例
     fileprivate class func lk_hudForView(view: UIView) -> MBProgressHUD {
         let hud = MBProgressHUD.init(view: view)
-//        hud?.minSize = CGSize(width: 100.0, height: 100.0 * 0.5)
+        hud?.minSize = CGSize(width: 100.0, height: 100.0 * 0.5)
         hud?.color = UIColor(white: 0.0, alpha: 0.9)
         hud?.cornerRadius = 10.0
         hud?.removeFromSuperViewOnHide = true
         hud?.labelFont = UIFont.preferredFont(forTextStyle: .subheadline)
-        view.addSubview(hud!)
-        return hud!
+        view.addSubview(hud ?? MBProgressHUD())
+        return hud ?? MBProgressHUD()
     }
 }
 
 // MARK: - Success HUD & Error HUD
 extension MBProgressHUD {
+    
+    /// 显示成功HUD
+    ///
+    /// - Parameters:
+    ///   - status: 提示文本
+    ///   - toView: 父视图
     class func lk_showSuccess(status: String, toView: UIView? = nil) {
         MBProgressHUD.lk_hud(status: status, icon: "lk_hud_success", toView: toView)
     }
     
+    /// 显示错误HUD
+    ///
+    /// - Parameters:
+    ///   - status: 提示文本
+    ///   - toView: 父视图
     class func lk_showError(status: String, toView: UIView? = nil) {
         MBProgressHUD.lk_hud(status: status, icon: "lk_hud_error", toView: toView)
+    }
+    
+    
+    /// 显示提示HUD
+    ///
+    /// - Parameters:
+    ///   - status: 提示文本
+    ///   - toView: 父视图
+    class func lk_showMessage(status: String, toView: UIView? = nil) {
+        MBProgressHUD.lk_hud(status: status, icon: "lk_hud_info", toView: toView)
     }
     
     private class func lk_hud(status: String, icon: String, toView: UIView? = nil) {
@@ -83,13 +100,6 @@ extension MBProgressHUD {
 
 // MARK: - Text HUD
 extension MBProgressHUD {
-    /// 设置状态提示文本
-    ///
-    /// - Parameter status: 提示文本
-    fileprivate func lk_setStatus(status: String) {
-        self.labelFont = UIFont.systemFont(ofSize: 13.0)
-        self.labelText = status
-    }
     
     /// 显示一个文字提示HUD，显示完成后自动隐藏
     ///
@@ -101,6 +111,14 @@ extension MBProgressHUD {
         hud.show(true)
         hud.hide(true, afterDelay: lk_hud_autoHideTimeInterval)
     }
+    
+    /// 设置状态提示文本
+    ///
+    /// - Parameter status: 提示文本
+    fileprivate func lk_setStatus(status: String) {
+        self.labelFont = UIFont.systemFont(ofSize: 13.0)
+        self.labelText = status
+    }
 }
 
 // MARK: - Loading HUD
@@ -110,8 +128,8 @@ extension UIViewController {
     ///
     /// - Parameters:
     ///   - status: 提示文本，默认为nil表示不显示提示文本
-    ///   - autoHide: 是否自动隐藏，默认为false表示不自动隐藏
-    func lk_showLoadingIndicator(status: String? = nil, autoHide: Bool = false) {
+    ///   - autoHide: 是否自动隐藏，默认为true表示自动隐藏
+    func lk_showLoadingIndicator(status: String? = nil, autoHide: Bool = true) {
         let hud = MBProgressHUD.lk_hudForView(view: self.view)
         hud.mode = .indeterminate
         if status != nil {
@@ -124,7 +142,7 @@ extension UIViewController {
         
     }
     
-    /// 隐藏等待 HUD
+    /// 隐藏等待HUD
     func lk_hideLoadingIndicator() {
         MBProgressHUD.hide(for: self.view, animated: true)
     }
