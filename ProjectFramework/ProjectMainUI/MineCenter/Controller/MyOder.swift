@@ -69,6 +69,11 @@ class MyOder: CustomTemplateViewController {
         }
     }
     
+    @objc fileprivate func cellButtonEvent(sender: UIButton) {
+        print(sender.currentTitle)
+        print(sender.tag)
+    }
+    
     //MARK: initUI
     private func initUI()->Void{
         self.view.addSubview(buttonBar)
@@ -89,8 +94,17 @@ class MyOder: CustomTemplateViewController {
         cell.mainImageView.ImageLoad(PostUrl: goods?.goodsinfo?.goodspic ?? "")
         cell.Datetime.text = model.addtime
         cell.goodsName.text = goods?.goodsinfo?.title ?? ""
-        cell.goodsCount.text = goods?.count ?? "1"
-        cell.goodsPrice.text = goods?.goodsinfo?.price ?? ""
+        cell.goodsCount.text = "数量：\(goods?.count ?? "1")"
+        let toltal = (Int(goods?.goodsinfo?.price ?? "") ?? 0) * (Int(goods?.count ?? "1") ?? 0)
+        cell.goodsPrice.text = "金额：¥\(toltal)"
+        
+        if model.ispay == "0" {
+            cell.StateButton.setTitle("确认付款", for: .normal)
+        } else {
+            cell.StateButton.setTitle("确认收货", for: .normal)
+        }
+        cell.StateButton.tag = indexPath.row
+        cell.StateButton.addTarget(self, action: #selector(cellButtonEvent), for: .touchUpInside)
         return cell
     }
     
