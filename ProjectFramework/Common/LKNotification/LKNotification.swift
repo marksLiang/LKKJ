@@ -33,4 +33,18 @@ class LKNotification: NSObject {
     class func addObserver(_ observer: Any, selector aSelector: Selector, name aName: String, object anObject: Any? = nil) {
         NotificationCenter.default.addObserver(observer, selector: aSelector, name: NSNotification.Name.init(aName), object: anObject)
     }
+    
+    /// 注销通知
+    ///
+    /// - Parameters:
+    ///   - observer: 监听者
+    ///   - aName: 通知名称
+    ///   - anObject: anObject
+    class func remove(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
+        NotificationCenter.default.removeObserver(observer, name: aName, object: anObject)
+    }
+    
+    class func remove(_ observer: Any) {
+        NotificationCenter.default.removeObserver(observer)
+    }
 }

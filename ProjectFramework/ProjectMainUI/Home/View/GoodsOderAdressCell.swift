@@ -29,7 +29,9 @@ class GoodsOderAdressCell: UITableViewCell {
 class GoodsOderCell: UITableViewCell {
     
     @IBOutlet weak var goodsImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var discountsLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!

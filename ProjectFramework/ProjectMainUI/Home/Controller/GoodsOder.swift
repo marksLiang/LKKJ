@@ -95,9 +95,11 @@ extension GoodsOder {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsOderCell", for: indexPath) as! GoodsOderCell
             cell.selectionStyle = .none
             cell.goodsImageView.ImageLoad(PostUrl: model.goodspic)
+            cell.titleLabel.text = model.content
             cell.priceLabel.text = "价格：¥\(model.price)"
             let discounts = Int(model.old_price)! - Int(model.price)!
             cell.discountsLabel.text = "已优惠：¥\(discounts * goodsNumber)"
+            cell.totalLabel.text = "金额：\((Int(model.price) ?? 0) * goodsNumber)"
             cell.numberLabel.text = "数量：\(goodsNumber)"
             cell.submitButton.layer.cornerRadius = 2.0
             cell.submitButton.layer.borderWidth = 0.5

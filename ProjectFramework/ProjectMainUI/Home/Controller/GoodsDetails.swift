@@ -153,6 +153,13 @@ extension GoodsDetails {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+extension GoodsDetails: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+}
+
 // MARK: - Table view data source & delegage
 extension GoodsDetails: UITableViewDataSource, UITableViewDelegate {
     
